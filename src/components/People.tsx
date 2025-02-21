@@ -16,12 +16,11 @@ export default function People({ people }: PeopleProps) {
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl [text-shadow:0.5px_1px_2px_black]">
             Meet the Team
           </h2>
-          <p className="mt-6 text-lg text-gray-300 font-mono [text-shadow:0.5px_0.5px_1px_black]">
+          <p className="mt-6 mb-7 text-lg text-gray-300 font-mono [text-shadow:0.5px_0.5px_1px_black]">
             We are a small team of developers, designers, and creators. We are passionate about what we do and are always looking for new challenges.
           </p>
         </div>
         <div className="xl:col-span-2">
-          {/* Changed to flex container with centering */}
           <ul role="list" className="flex flex-col items-center gap-8 sm:gap-10">
             {people.map((person) => (
               <li key={person.name} className="transition-transform duration-300 hover:scale-105 w-full max-w-md">
