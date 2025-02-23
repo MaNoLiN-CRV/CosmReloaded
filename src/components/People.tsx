@@ -10,7 +10,7 @@ interface PeopleProps {
 
 export default function People({ people }: PeopleProps) {
   return (
-    <div className="relative bg-gradient-to-b from-[#ffa07a] to-[#242424] py-12 sm:py-16 transform -skew-y-3 rounded-lg">
+    <div className="relative bg-gradient-to-b from-[#ffa07a] to-[#242424] py-12 sm:py-16 transform -skew-y-3 rounded-lg flex items-center justify-center mt-40">
       <div className="container mx-auto max-w-6xl p-10 xl:grid xl:grid-cols-3 xl:gap-10">
         <div className="xl:col-span-1">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl [text-shadow:0.5px_1px_2px_black]">
