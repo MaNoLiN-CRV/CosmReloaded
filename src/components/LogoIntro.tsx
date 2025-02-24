@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 interface LogoIntroProps {
   onAnimationComplete?: () => void;
@@ -20,7 +21,7 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       backgroundColor: '#242424',
       transition: {
         duration: 3,
-        when: "beforeChildren",
+        when: 'beforeChildren',
         staggerChildren: 0.3
       }
     }
@@ -37,7 +38,7 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         damping: 15
       }
@@ -53,7 +54,7 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       opacity: 1,
       x: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         damping: 15
       }
@@ -65,7 +66,7 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       className="relative flex items-center justify-center min-h-screen w-full overflow-hidden bg-[#242424]"
       variants={containerVariants}
       initial="hidden"
-      animate={isLoaded ? "visible" : "hidden"}
+      animate={isLoaded ? 'visible' : 'hidden'}
       onAnimationComplete={() => onAnimationComplete?.()}
     >
       {/* Background gradient layers */}
@@ -73,28 +74,19 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       <div className="absolute inset-0 bg-gradient from-[#242424] via-transparent to-transparent" />
       
       {/* Content container */}
-      <div className="relative z-10 flex items-center gap-4 ... hover:scale-110 transition-transform duration-500">
-        <motion.img
-          src="/C.svg"
-          alt="Logo"
-          className="w-40 h-40 drop-shadow-2xl"
-          variants={logoVariants}
-          draggable={false}
-        />
+   
+        <motion.div variants={logoVariants}>
+          <Logo color="#fff" width={400} height={400} />
+        </motion.div>
         
-        <motion.h1
-          className="text-12xl font-bold text-white tracking-wider drop-shadow-2xl"
-          style={{
-            fontFamily: 'Bebas Neue',
-            WebkitTextStroke: '1px rgba(255,255,255,0.1)'
-          }}
+     
+        <motion.p
+          className="absolute bottom-10 right-10 text-2xl font-medium tracking-tight text-white"
           variants={textVariants}
         >
-          <span className=" bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-            Cosm
-          </span>
-        </motion.h1>
-      </div>
+          We Develop
+        </motion.p>
     </motion.div>
   );
 };
+
