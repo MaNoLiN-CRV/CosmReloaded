@@ -23,7 +23,7 @@ const team = [
 const languages = [
   {
     name: 'Rust',
-    icon: '/icons/rust.png',
+    icon: '/icons/rust.svg',
     color: '#e34f26'
   },
   {

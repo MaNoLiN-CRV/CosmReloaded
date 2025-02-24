@@ -23,7 +23,7 @@ const LanguageScroll: React.FC<LanguageScrollProps> = ({ languages }) => {
 
     const animation = async () => {
       await controls.start({
-        x: [0, -itemWidth], 
+        x: [0, -itemWidth],
         transition: {
           duration: 30,
           ease: "linear",
@@ -45,7 +45,7 @@ const LanguageScroll: React.FC<LanguageScrollProps> = ({ languages }) => {
       <div className="relative w-full max-w-7xl mx-auto px-4">
         <div className="space-y-4 text-center mb-20">
           <h2 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#ffa07a] to-[#ff008e] 
-                         filter drop-shadow-lg tracking-tight">
+                         filter drop-shadow-lg tracking-tight p-5">
             Technologies We Master
           </h2>
           <p className="text-gray-400 text-lg font-mono">
