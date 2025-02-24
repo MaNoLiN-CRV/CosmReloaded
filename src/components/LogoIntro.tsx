@@ -73,17 +73,16 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       <div className="absolute inset-0 bg-gradient-to-b from-[#ffa07a]/80  to-transparent" />
       <div className="absolute inset-0 bg-gradient from-[#242424] via-transparent to-transparent" />
       
-      {/* Content container */}
-   
-        <motion.div variants={logoVariants}>
-          <Logo color="#fff" width={400} height={400} />
-        </motion.div>
-        
-     
-        <p className="absolute bottom-10 right-10 text-2xl font-semibold text-white mt-10 font-fira-code" >
-          we develop  
-        </p>
-        
+      <motion.div variants={logoVariants}>
+        <Logo color="#fff" width={400} height={400} />
+      </motion.div>
+      
+      {/* Typing SVG repositioned */}
+      <div className="absolute left-10 top-10">
+        <a href="https://git.io/typing-svg">
+          <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=10000&pause=6000&color=F7F7F7&width=435&lines=we+develop" alt="Typing SVG" />
+        </a>
+      </div>
     </motion.div>
   );
 };
