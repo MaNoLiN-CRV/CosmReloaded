@@ -40,7 +40,7 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       transition: {
         type: 'spring',
         stiffness: 100,
-        damping: 15
+        damping: 10
       }
     }
   };
