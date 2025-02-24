@@ -80,12 +80,10 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
         </motion.div>
         
      
-        <motion.p
-          className="absolute bottom-10 right-10 text-2xl font-medium tracking-tight text-white"
-          variants={textVariants}
-        >
-          We Develop
-        </motion.p>
+        <p className="absolute bottom-10 right-10 text-2xl font-semibold text-white mt-10 font-fira-code" >
+          we develop  
+        </p>
+        
     </motion.div>
   );
 };
