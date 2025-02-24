@@ -30,29 +30,13 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
   const logoVariants = {
     hidden: {
       scale: 0.8,
-      opacity: 0,
+      opacity: 0, 
       y: 20
     },
     visible: {
       scale: 1,
-      opacity: 1,
+      opacity: 1, 
       y: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  const textVariants = {
-    hidden: {
-      opacity: 0,
-      x: -20
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
       transition: {
         type: 'spring',
         stiffness: 100,
@@ -70,10 +54,9 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
       onAnimationComplete={() => onAnimationComplete?.()}
     >
       {/* Background gradient layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#ffa07a]/80  to-transparent" />
-      <div className="absolute inset-0 bg-gradient from-[#242424] via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#ffa07a]/80 to-[#242424]" />
       
-      <motion.div variants={logoVariants}>
+      <motion.div variants={logoVariants} className="relative z-10">
         <Logo color="#fff" width={400} height={400} />
       </motion.div>
       
@@ -86,4 +69,5 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onAnimationComplete }) => 
     </motion.div>
   );
 };
+
 
