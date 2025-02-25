@@ -3,8 +3,8 @@ import './App.css'
 import AnimatedSections from './components/AnimatedSections'
 import LanguageScroll from './components/LanguageScroll'
 
-import { LogoIntro } from './components/LogoIntro'
-import People from './components/People'
+import { LogoIntro } from './components/initial/LogoIntro'
+import People from './components/credits/People'
 
 
 const team = [
