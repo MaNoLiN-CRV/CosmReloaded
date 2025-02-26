@@ -5,6 +5,7 @@ import LanguageScroll from './components/LanguageScroll'
 
 import { LogoIntro } from './components/initial/LogoIntro'
 import People from './components/credits/People'
+import MobileFrameworks, { Framework } from './components/mobile/MobileFrameworks'
 
 
 const team = [
@@ -44,12 +45,31 @@ const languages = [
 
 ]
 
+const mobileFrameworks : Framework[] = [
+  {
+    name: 'Flutter',
+    icon: '/mobile_frameworks/flutter.png',
+    color: '#02569b'
+  },
+  {
+    name: 'React Native',
+    icon: '/mobile_frameworks/react-native.png',
+    color: '#61dafb'
+  },
+  {
+    name: 'Kotlin',
+    icon: '/mobile_frameworks/kotlin.png',
+    color: '#0095d5'
+  }
+]
+
 function App() {
   return (
     <>
       <AnimatedSections>
          <LogoIntro />
          <LanguageScroll languages={languages}/>
+         <MobileFrameworks frameworks={mobileFrameworks}/>
          <People people={team}/>
       </AnimatedSections>
      
