@@ -32,7 +32,7 @@ const AnimatedSections = ({ children }: AnimatedSectionsProps) => {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden">
+    <div className="fixed inset-0 overflow-hidden bg-[#242424]">
       {/* Side Navigation */}
       <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
         <div className="flex flex-col gap-4">
@@ -56,9 +56,9 @@ const AnimatedSections = ({ children }: AnimatedSectionsProps) => {
         {sections.map((section, index) => (
           <div
             key={index}
-            className={`h-full w-full flex items-center justify-center
+            className={`h-full w-full flex items-center justify-center bg-[#242424]
               transition-opacity duration-1000
-              ${activeSection === index ? 'opacity-100' : 'opacity-50'}`}
+              ${activeSection === index }`}
           >
             <div
               className={`w-full h-full transform transition-all duration-1000

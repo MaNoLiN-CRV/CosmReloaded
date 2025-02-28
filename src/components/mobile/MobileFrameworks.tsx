@@ -68,8 +68,8 @@ const MobileFrameworks: React.FC<MobileFrameworksProps> = ({ frameworks }) => {
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={controls}
-        transition={{ duration: 1, delay: 1 }}
+        animate={isIntersecting ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+        transition={{ duration: 2, delay: 1.5 }}
         className="relative"
       >
         {/* Mobile frame with lighter background */}
