@@ -7,12 +7,14 @@ const team = [
   {
     name: 'Félix Caba',
     role: 'Founder, Full-Stack Developer',
-    image: 'felix.jpg'
+    image: 'felix.jpg',
+    github: 'felix-caba'
   },  
   {
     name: 'Manuel Cervantes',
     role: 'Co-Founder, Full-Stack Developer',
-    image: 'manu.jpg'
+    image: 'manu.jpg',
+    github: 'MaNoLiN-CRV' 
   }
 ] 
 
@@ -46,7 +48,8 @@ const languages = [
     name: 'Python',
     icon: '/icons/python-original.svg',
     color: '#306998'
-  }
+  },
+  
 ]
 
 const frameworks = [
