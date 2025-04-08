@@ -19,32 +19,32 @@ const team = [
 const languages = [
   {
     name: 'Rust',
-    icon: '/icons/rust.svg',
+    icon: '/icons/rust-original.svg',
     color: '#e34f26'
   },
   {
-    name: 'TypeScript',
-    icon: '/icons/ts.png',
-    color: '#1572b6'
-  },
-  {
     name: 'Java',
-    icon: '/icons/java.png',
+    icon: '/icons/java-original.svg',
     color: '#f7df1e'
   },
   {
-    name: 'Dart',
-    icon: '/icons/dart.png',
-    color: '#0175c2'
+    name: 'TypeScript',
+    icon: '/icons/typescript-original.svg',
+    color: '#1572b6'
   },
   {
     name: 'C',
-    icon: '/icons/c.png',
+    icon: '/icons/c-original.svg',
     color: '#3949AB'
   },
   {
+    name: 'Dart',
+    icon: '/icons/dart-original.svg',
+    color: '#0175c2'
+  },
+  {
     name: 'Python',
-    icon: '/icons/python.png',
+    icon: '/icons/python-original.svg',
     color: '#306998'
   }
 ]
@@ -52,22 +52,22 @@ const languages = [
 const frameworks = [
   {
     name: 'React Native',
-    icon: '/icons/react-native.png',
+    icon: '/icons/react-original.svg',
     color: '#61DAFB'
   },
   {
     name: 'Vite',
-    icon: '/icons/vite.png',
+    icon: '/icons/vite-original.svg',
     color: '#646CFF'
   },
   {
     name: 'Flutter',
-    icon: '/icons/flutter.png',
+    icon: '/icons/flutter-original.svg',
     color: '#0175C2'
   },
   {
     name: 'Angular',
-    icon: '/icons/angular.png',
+    icon: '/icons/angular-original.svg',
     color: '#DD0031'
   }
 ]
