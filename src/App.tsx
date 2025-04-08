@@ -59,8 +59,8 @@ const frameworks = [
     color: '#61DAFB'
   },
   {
-    name: 'Vite',
-    icon: '/icons/vite-original.svg',
+    name: 'Express',
+    icon: '/icons/express-original.svg',
     color: '#646CFF'
   },
   {
