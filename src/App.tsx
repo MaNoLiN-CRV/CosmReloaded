@@ -6,15 +6,29 @@ import People from './components/credits/People'
 const team = [
   {
     name: 'Félix Caba',
-    role: 'Founder, Full-Stack Developer',
+    primaryRole: 'Embedded Systems',
+    secondaryRole: 'Full-Stack Developer',
+    expertise: [
+      'Low-level programming',
+      'Performance optimization',
+      'Concurrent systems design'
+    ],
     image: 'felix.jpg',
-    github: 'felix-caba'
+    github: 'felix-caba',
+    bio: 'Félix is an embedded systems specialist with a passion for highly optimized code and concurrent programming paradigms. He focuses on pushing the boundaries of what\'s possible with hardware-software integration.'
   },  
   {
     name: 'Manuel Cervantes',
-    role: 'Co-Founder, Full-Stack Developer',
+    primaryRole: 'Cybersecurity',
+    secondaryRole: 'Full-Stack Developer',
+    expertise: [
+      'Secure systems architecture',
+      'Safety-critical applications',
+      'Concurrent programming'
+    ],
     image: 'manu.jpg',
-    github: 'MaNoLiN-CRV' 
+    github: 'MaNoLiN-CRV',
+    bio: 'Manuel specializes in cybersecurity with extensive experience building secure and robust systems. His expertise extends to safety-critical applications where reliability and performance are paramount.'
   }
 ] 
 
@@ -165,11 +179,11 @@ function App() {
           <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-md h-10 bg-gradient-to-r from-transparent via-[rgba(255,160,122,0.25)] to-transparent blur-md"></div>
         </section>
 
-        {/* Team Section */}
+        {/* Team Section - simplified without expansion animation */}
         <section id="team" className="mb-24 scroll-mt-24">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(255,160,122,0.15)] to-[rgba(230,107,117,0.15)] rounded-3xl blur-xl transform -translate-y-4"></div>
-            <div className="relative glass-card">
+            <div className="relative glass-card team-container">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--accent-ember)] mb-8 pb-4 border-b border-[rgba(255,255,255,0.1)]">
                 // Our Team
               </h2>
