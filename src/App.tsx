@@ -73,9 +73,19 @@ const frameworks = [
     color: '#61DAFB'
   },
   {
+    name: 'React',
+    icon: '/icons/react-original.svg',
+    color: '#61DAFB'
+  },
+  {
     name: 'Express',
     icon: '/icons/express-original.svg',
     color: '#646CFF'
+  },
+  {
+    name: 'NestJS',
+    icon: '/icons/nestjs-original.svg', 
+    color: '#E0234E' 
   },
   {
     name: 'Flutter',
@@ -231,7 +241,7 @@ function App() {
               {/* Frameworks */}
               <div>
                 <h3 className="text-2xl font-bold text-[var(--accent-blush)] mb-6">Frameworks</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="grid grid-cols-6 gap-4"> 
                   {frameworks.map((fw, index) => (
                     <div key={index} className="glass-item group hover:scale-105 transition-all">
                       <div className="icon-container mb-3 mx-auto flex items-center justify-center group-hover:animate-pulse">
