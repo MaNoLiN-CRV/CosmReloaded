@@ -135,6 +135,7 @@ function App() {
           {/* Desktop navigation */}
           <nav className="hidden md:flex gap-6">
             <a href="#" className="text-[var(--accent-ember)] hover:text-[var(--ac-primary)] transition-colors">Home</a>
+            <a href="/what-we-do" className="text-[var(--accent-honey)] hover:text-[var(--ac-primary)] transition-colors">What We Do</a>
             <a href="#team" className="text-[var(--accent-blush)] hover:text-[var(--ac-primary)] transition-colors">Team</a>
             <a href="#tech" className="text-[var(--accent-honey)] hover:text-[var(--ac-primary)] transition-colors">Technologies</a>
             <a href="#contact" className="text-[var(--acc-secondary)] hover:text-[var(--ac-primary)] transition-colors">Contact</a>
@@ -146,6 +147,7 @@ function App() {
           <div className="md:hidden mt-2 pb-2">
             <nav className="flex flex-col gap-3">
               <a href="#" className="text-[var(--accent-ember)] hover:text-[var(--ac-primary)] transition-colors px-2 py-1">Home</a>
+              <a href="/what-we-do" className="text-[var(--accent-honey)] hover:text-[var(--ac-primary)] transition-colors px-2 py-1">What We Do</a>
               <a href="#team" className="text-[var(--accent-blush)] hover:text-[var(--ac-primary)] transition-colors px-2 py-1">Team</a>
               <a href="#tech" className="text-[var(--accent-honey)] hover:text-[var(--ac-primary)] transition-colors px-2 py-1">Technologies</a>
               <a href="#contact" className="text-[var(--acc-secondary)] hover:text-[var(--ac-primary)] transition-colors px-2 py-1">Contact</a>
@@ -176,6 +178,9 @@ function App() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
+              <a href="/what-we-do" className="px-6 py-3 rounded-full glass-button text-[var(--accent-honey)] transition-all">
+                What We Do
+              </a>
               <a href="#team" className="px-6 py-3 rounded-full glass-button text-[var(--ac-primary)] transition-all">
                 Meet Our Team
               </a>
