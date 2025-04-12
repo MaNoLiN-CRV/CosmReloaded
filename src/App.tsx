@@ -23,12 +23,12 @@ const team = [
     secondaryRole: 'Full-Stack Developer',
     expertise: [
       'Secure systems architecture',
-      'Safety-critical applications',
+      'Optimization and performance tuning',
       'Concurrent programming'
     ],
     image: 'manu.jpg',
     github: 'MaNoLiN-CRV',
-    bio: 'Manuel specializes in cybersecurity with extensive experience building secure and robust systems. His expertise extends to safety-critical applications where reliability and performance are paramount.'
+    bio: 'Manuel specializes in cybersecurity with extensive experience building secure and robust systems. His expertise in optimization and concurrent programming allows him to create efficient solutions.'
   }
 ] 
 
