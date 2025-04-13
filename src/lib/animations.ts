@@ -416,6 +416,42 @@ export const initNavHighlight = () => {
   };
 };
 
+// Improved GitHub buttons functionality
+export function initSocialButtons() {
+  const socialButtons = document.querySelectorAll('.social-button');
+  
+  // Remove any existing event listeners (cleanup)
+  socialButtons.forEach(button => {
+    const newButton = button.cloneNode(true);
+    button.parentNode?.replaceChild(newButton, button);
+  });
+  
+  // Add new event listeners
+  document.querySelectorAll('.social-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      
+      // Subtle click animation
+      target.style.transform = 'scale(0.95) translateY(1px)';
+      setTimeout(() => {
+        target.style.transform = '';
+      }, 150);
+      
+      // Get the href attribute
+      const link = target.getAttribute('href');
+      if (link) {
+        // Let the default link behavior work (will open in new tab due to target="_blank")
+        return true;
+      }
+    });
+    
+    // Make buttons accessible
+    if (!button.getAttribute('aria-label')) {
+      button.setAttribute('aria-label', 'Social media link');
+    }
+  });
+}
+
 // Initialize all animation systems
 export const initAllAnimations = () => {
   document.addEventListener('DOMContentLoaded', () => {
@@ -435,6 +471,7 @@ export const initAllAnimations = () => {
       initParticleSystem();
       initLogoAnimation();
       initHorizontalCards();
+      initSocialButtons();
       
       // Add typing animation
       const heroTyping = document.getElementById('hero-typing');
@@ -460,5 +497,6 @@ export default {
   initTypingAnimation,
   initParallaxEffect,
   initNavHighlight,
+  initSocialButtons,
   initAllAnimations,
 };
