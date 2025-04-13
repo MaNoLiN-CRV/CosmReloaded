@@ -544,56 +544,62 @@
 
 /* Homepage Hero */
 .hero-background {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  width: 100vw;
+  position: fixed; /* Changed from absolute to fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-grid {
   position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 30px 30px;
-  transform: perspective(500px) rotateX(30deg);
-  animation: gridMove 60s linear infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
-@keyframes gridMove {
-  0% {
-    transform: perspective(500px) rotateX(30deg) translateY(0);
+/* Remove the glowing cells, keep only the grid lines */
+.grid-cell {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1); /* Reduced opacity and changed color */
+  border-radius: 0; /* No rounded corners */
+  box-shadow: none; /* Remove glow effect */
+}
+
+/* Remove the grid cell pulse animation that was causing the lights */
+@keyframes gridPulse {
+  0%, 100% {
+    opacity: 0.15;
   }
-  100% {
-    transform: perspective(500px) rotateX(30deg) translateY(30px);
+  50% {
+    opacity: 0.2;
   }
 }
 
 .hero-glow {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 30%, rgba(255, 160, 122, 0.15) 0%, transparent 70%);
-  opacity: 0.5;
-  animation: glow 10s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  0% {
-    opacity: 0.5;
-    background-position: 0% 50%;
-  }
-  100% {
-    opacity: 0.8;
-    background-position: 100% 50%;
-  }
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 160, 122, 0.05) 0%,
+    rgba(245, 215, 110, 0.05) 40%,
+    rgba(230, 107, 117, 0.02) 70%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  filter: blur(40px);
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .hero-particles {
@@ -653,13 +659,14 @@
 
 /* Enhanced Neonic Grid and Background Effects */
 .hero-background {
-  position: absolute;
+  position: fixed; /* Changed from absolute to fixed */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero-grid {
@@ -671,37 +678,23 @@
   z-index: 1;
 }
 
+/* Remove the glowing cells, keep only the grid lines */
 .grid-cell {
   position: absolute;
   width: 1px;
   height: 1px;
-  background: rgba(255, 160, 122, 0.2);
-  border-radius: 50%;
-  box-shadow: 0 0 8px 2px rgba(255, 160, 122, 0.3);
-  animation: gridPulse 3s infinite alternate;
-  transform-origin: center;
+  background: rgba(255, 255, 255, 0.1); /* Reduced opacity and changed color */
+  border-radius: 0; /* No rounded corners */
+  box-shadow: none; /* Remove glow effect */
 }
 
-.grid-cell:nth-child(3n) {
-  background: rgba(245, 215, 110, 0.2);
-  box-shadow: 0 0 8px 2px rgba(245, 215, 110, 0.3);
-  animation-delay: 0.5s;
-}
-
-.grid-cell:nth-child(5n) {
-  background: rgba(230, 107, 117, 0.2);
-  box-shadow: 0 0 8px 2px rgba(230, 107, 117, 0.3);
-  animation-delay: 1s;
-}
-
+/* Remove the grid cell pulse animation that was causing the lights */
 @keyframes gridPulse {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
+    opacity: 0.15;
   }
   50% {
-    transform: scale(1.5);
-    opacity: 0.8;
+    opacity: 0.2;
   }
 }
 
@@ -712,14 +705,14 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 160, 122, 0.15) 0%,
-    rgba(245, 215, 110, 0.15) 40%,
-    rgba(230, 107, 117, 0.05) 70%,
+    rgba(255, 160, 122, 0.05) 0%,
+    rgba(245, 215, 110, 0.05) 40%,
+    rgba(230, 107, 117, 0.02) 70%,
     transparent 100%
   );
   mix-blend-mode: screen;
   pointer-events: none;
-  filter: blur(20px);
+  filter: blur(40px);
   transform: translate(-50%, -50%);
   z-index: 2;
 }
@@ -919,11 +912,18 @@
 
 .typing-text {
   display: inline-block;
-  border-right: 3px solid var(--accent-honey);
+  border-right: 3px solid var(--accent-honey); /* Keep only this cursor */
   padding-right: 5px;
   animation: cursorBlink 1s step-end infinite;
 }
 
+/* Remove this redundant typing animation that was causing a second cursor */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Only keep this cursor animation */
 @keyframes cursorBlink {
   from, to { border-color: transparent }
   50% { border-color: var(--accent-honey); }

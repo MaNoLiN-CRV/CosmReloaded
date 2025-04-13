@@ -75,7 +75,7 @@ export const init3DCardEffect = () => {
   });
 };
 
-// Improved neonic grid background
+// Improved neonic grid background to cover the entire home page
 export const initNeonicGrid = () => {
   const gridContainer = document.querySelector('.hero-grid');
   if (!gridContainer) return;
@@ -84,8 +84,8 @@ export const initNeonicGrid = () => {
   
   // Create grid cells
   const cellSize = 40; // Size of each grid cell
-  const containerWidth = window.innerWidth;
-  const containerHeight = window.innerHeight * 0.8;
+  const containerWidth = window.innerWidth * 1.2; // Larger than screen width to ensure full coverage
+  const containerHeight = window.innerHeight * 1.2; // Larger than screen height to ensure full coverage
   
   const columns = Math.ceil(containerWidth / cellSize);
   const rows = Math.ceil(containerHeight / cellSize);
@@ -100,15 +100,14 @@ export const initNeonicGrid = () => {
       cell.style.left = `${x * cellSize}px`;
       cell.style.top = `${y * cellSize}px`;
       
-      // Animate cells with different delays based on position
-      cell.style.animationDelay = `${(x + y) * 0.05}s`;
+      // Removed animation delay that was causing grid lights
       
       gridContainer.appendChild(cell);
     }
   }
   
   // Add glow effect that follows mouse
-  const heroSection = document.querySelector('section[ref="heroRef"]');
+  const heroSection = document.querySelector('body');
   const heroGlow = document.querySelector('.hero-glow');
   
   if (heroSection && heroGlow) {
@@ -120,6 +119,13 @@ export const initNeonicGrid = () => {
       (heroGlow as HTMLElement).style.top = `${y}px`;
     });
   }
+
+  // Handle window resize to ensure grid always covers the screen
+  window.addEventListener('resize', () => {
+    if (gridContainer) {
+      initNeonicGrid(); // Re-initialize grid on resize
+    }
+  });
 };
 
 // Enhanced particle system
@@ -160,7 +166,7 @@ export const initParticleSystem = () => {
     // Create particle object with properties
     particles.push({
       x: Math.random() * window.innerWidth,
-      y: Math.random() * (window.innerHeight * 0.8), // Keep within hero section
+      y: Math.random() * window.innerHeight, // Use full window height
       size,
       speedX: (Math.random() - 0.5) * 1.5,
       speedY: (Math.random() - 0.5) * 1.5,
@@ -171,6 +177,8 @@ export const initParticleSystem = () => {
   }
   
   // Animation loop
+  let animationFrameId: number;
+  
   const animate = () => {
     particles.forEach((p) => {
       // Update position
@@ -179,7 +187,7 @@ export const initParticleSystem = () => {
       
       // Bounce on edges
       if (p.x < 0 || p.x > window.innerWidth) p.speedX *= -1;
-      if (p.y < 0 || p.y > window.innerHeight * 0.8) p.speedY *= -1;
+      if (p.y < 0 || p.y > window.innerHeight) p.speedY *= -1;
       
       // Pulsate opacity
       p.opacity += 0.005 * p.opacityDirection;
@@ -193,10 +201,17 @@ export const initParticleSystem = () => {
       p.element.style.opacity = p.opacity.toString();
     });
     
-    requestAnimationFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
   };
   
   animate();
+  
+  // Clean up animation when component unmounts
+  return () => {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+  };
 };
 
 // Logo animation effect
@@ -241,7 +256,7 @@ export const initLogoAnimation = () => {
   }, 500);
 };
 
-// Typing animation for hero headings
+// Typing animation for hero headings (fixed to avoid double cursor)
 export const initTypingAnimation = (elementId: string, textArray: string[], typingSpeed = 100, backspaceSpeed = 50, delayBetween = 2000) => {
   const element = document.getElementById(elementId);
   if (!element) return;
@@ -250,6 +265,10 @@ export const initTypingAnimation = (elementId: string, textArray: string[], typi
   let charIndex = 0;
   let isDeleting = false;
   let typingTimeout: number | undefined;
+  
+  // Clear element content to start fresh
+  element.textContent = '';
+  element.classList.add('typing-text');
   
   const type = () => {
     const currentText = textArray[textIndex];
@@ -262,9 +281,9 @@ export const initTypingAnimation = (elementId: string, textArray: string[], typi
       if (charIndex === 0) {
         isDeleting = false;
         textIndex = (textIndex + 1) % textArray.length;
-        typingTimeout = setTimeout(type, delayBetween) as unknown as number;
+        typingTimeout = setTimeout(type, delayBetween);
       } else {
-        typingTimeout = setTimeout(type, backspaceSpeed) as unknown as number;
+        typingTimeout = setTimeout(type, backspaceSpeed);
       }
     } else {
       // Typing text
@@ -273,17 +292,17 @@ export const initTypingAnimation = (elementId: string, textArray: string[], typi
       
       if (charIndex === currentText.length) {
         isDeleting = true;
-        typingTimeout = setTimeout(type, delayBetween) as unknown as number;
+        typingTimeout = setTimeout(type, delayBetween);
       } else {
-        typingTimeout = setTimeout(type, typingSpeed) as unknown as number;
+        typingTimeout = setTimeout(type, typingSpeed);
       }
     }
   };
   
-  element.textContent = '';
-  element.classList.add('typing-text');
+  // Start typing animation
   type();
   
+  // Return cleanup function
   return () => {
     if (typingTimeout) clearTimeout(typingTimeout);
   };
@@ -299,18 +318,21 @@ export const initHorizontalCards = () => {
     const cardDesc = card.querySelector('p');
     
     if (cardIcon && cardTitle && cardDesc) {
-      // Create a new flex container for icon and title
-      const headerContainer = document.createElement('div');
-      headerContainer.classList.add('card-header');
-      headerContainer.style.display = 'flex';
-      headerContainer.style.alignItems = 'center';
-      headerContainer.style.gap = '1rem';
-      headerContainer.style.marginBottom = '0.75rem';
-      
-      // Move the icon and title to this container
-      card.insertBefore(headerContainer, cardIcon);
-      headerContainer.appendChild(cardIcon);
-      headerContainer.appendChild(cardTitle);
+      // Check if the card header already exists to avoid creating duplicate elements
+      if (!card.querySelector('.card-header')) {
+        // Create a new flex container for icon and title
+        const headerContainer = document.createElement('div');
+        headerContainer.classList.add('card-header');
+        headerContainer.style.display = 'flex';
+        headerContainer.style.alignItems = 'center';
+        headerContainer.style.gap = '1rem';
+        headerContainer.style.marginBottom = '0.75rem';
+        
+        // Move the icon and title to this container
+        card.insertBefore(headerContainer, cardIcon);
+        headerContainer.appendChild(cardIcon);
+        headerContainer.appendChild(cardTitle);
+      }
       
       // Add hover effect
       card.addEventListener('mouseenter', () => {
@@ -328,15 +350,27 @@ export const initHorizontalCards = () => {
 export const initParallaxEffect = () => {
   const parallaxLayers = document.querySelectorAll('[data-parallax]');
   
-  window.addEventListener('scroll', () => {
+  const handleParallax = () => {
     const scrollTop = window.scrollY;
     
     parallaxLayers.forEach((layer) => {
-      const speed = parseFloat((layer as HTMLElement).dataset.parallax || '0.1');
-      const offset = scrollTop * speed;
-      (layer as HTMLElement).style.transform = `translateY(${offset}px)`;
+      if ((layer as HTMLElement).dataset.parallax) {
+        const speed = parseFloat((layer as HTMLElement).dataset.parallax || '0.1');
+        const offset = scrollTop * speed;
+        (layer as HTMLElement).style.transform = `translateY(${offset}px)`;
+      }
     });
-  });
+  };
+  
+  window.addEventListener('scroll', handleParallax);
+  
+  // Initial call
+  handleParallax();
+  
+  // Clean up listener
+  return () => {
+    window.removeEventListener('scroll', handleParallax);
+  };
 };
 
 // Initialize nav highlight on scroll
@@ -355,7 +389,11 @@ export const initNavHighlight = () => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         navLinks.forEach(link => {
-          link.classList.toggle('active', (link as HTMLAnchorElement).hash === `#${id}`);
+          if (id && (link as HTMLAnchorElement).hash === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
         });
       }
     });
@@ -364,6 +402,13 @@ export const initNavHighlight = () => {
   sections.forEach(section => {
     navObserver.observe(section);
   });
+  
+  // Clean up observer
+  return () => {
+    sections.forEach(section => {
+      navObserver.unobserve(section);
+    });
+  };
 };
 
 // Initialize all animation systems
@@ -387,11 +432,14 @@ export const initAllAnimations = () => {
       initHorizontalCards();
       
       // Add typing animation
-      initTypingAnimation('hero-typing', [
-        'We are Cosm Reloaded.',
-        'We design great experiences.',
-        'We build the future.',
-      ]);
+      const heroTyping = document.getElementById('hero-typing');
+      if (heroTyping) {
+        initTypingAnimation('hero-typing', [
+          'We are Cosm Reloaded.',
+          'We design great experiences.',
+          'We build the future.',
+        ]);
+      }
     }
   });
 };
