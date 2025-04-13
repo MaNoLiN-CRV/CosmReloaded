@@ -36,10 +36,11 @@ export const initMagneticButtons = () => {
   const buttons = document.querySelectorAll('.magnetic-btn');
   
   buttons.forEach((button) => {
-    button.addEventListener('mousemove', (e) => {
+    button.addEventListener('mousemove', (e: Event) => {
+      const mouseEvent = e as MouseEvent;
       const rect = (button as HTMLElement).getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+      const x = mouseEvent.clientX - rect.left - rect.width / 2;
+      const y = mouseEvent.clientY - rect.top - rect.height / 2;
       const strength = 10; // Adjust intensity of the effect
       
       (button as HTMLElement).style.transform = `translate(${x / strength}px, ${y / strength}px)`;
@@ -56,12 +57,13 @@ export const init3DCardEffect = () => {
   const cards = document.querySelectorAll('.card-3d-effect');
   
   cards.forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
+    card.addEventListener('mousemove', (e: Event) => {
+      const mouseEvent = e as MouseEvent;
       const rect = (card as HTMLElement).getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      const posX = e.clientX - centerX;
-      const posY = e.clientY - centerY;
+      const posX = mouseEvent.clientX - centerX;
+      const posY = mouseEvent.clientY - centerY;
       
       const rotateX = posY * -0.05;
       const rotateY = posX * 0.05;
@@ -111,7 +113,7 @@ export const initNeonicGrid = () => {
   const heroGlow = document.querySelector('.hero-glow');
   
   if (heroSection && heroGlow) {
-    heroSection.addEventListener('mousemove', (e) => {
+    heroSection.addEventListener('mousemove', (e: MouseEvent) => {
       const x = e.clientX;
       const y = e.clientY;
       
@@ -264,12 +266,14 @@ export const initTypingAnimation = (elementId: string, textArray: string[], typi
   let textIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
-  let typingTimeout: number | undefined;
+  let typingTimeout: ReturnType<typeof setTimeout> | undefined;
   
   // Clear element content to start fresh
   element.textContent = '';
   element.classList.add('typing-text');
   
+
+
   const type = () => {
     const currentText = textArray[textIndex];
     
@@ -305,6 +309,7 @@ export const initTypingAnimation = (elementId: string, textArray: string[], typi
   // Return cleanup function
   return () => {
     if (typingTimeout) clearTimeout(typingTimeout);
+   
   };
 };
 

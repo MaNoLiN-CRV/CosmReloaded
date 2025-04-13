@@ -843,25 +843,39 @@
 
 /* Enhanced Card Layouts */
 .scroll-cards-container {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1.5rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 280px);
+  gap: 1.25rem;
   overflow-x: auto;
-  padding-bottom: 1rem;
+  padding: 0.5rem 0.25rem 1.5rem; /* Added more padding around to accommodate shadows */
+  margin: 0.75rem 0.5rem; /* Added margin to ensure shadows aren't cut off */
+  scroll-snap-type: x mandatory;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 160, 122, 0.3) rgba(43, 41, 45, 0.3);
+  scrollbar-color: var(--accent-ember) rgba(43, 41, 45, 0.6);
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-card {
-  min-width: 280px;
-  flex: 0 0 auto;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  background: rgba(56, 53, 57, 0.4);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  scroll-snap-align: start;
+  padding: 1.25rem;
+  height: 100%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  z-index: 1; /* Set base z-index */
+  margin: 4px 4px 16px 4px; /* Added margin to create space for the shadow */
+}
+
+.scroll-card:hover {
+  transform: translateY(-3px);
+  /* Isolated z-index increase to prevent affecting neighboring elements */
+  z-index: 2;
+  /* Modified box-shadow to have a more subtle effect that works within the constraints */
+  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 160, 122, 0.3);
 }
 
 .card-header {
@@ -912,15 +926,13 @@
 
 .typing-text {
   display: inline-block;
-  border-right: 3px solid var(--accent-honey); /* Keep only this cursor */
   padding-right: 5px;
-  animation: cursorBlink 1s step-end infinite;
 }
 
-/* Remove this redundant typing animation that was causing a second cursor */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+/* Create a separate class for the cursor animation */
+.typing-cursor {
+  border-right: 0.15em solid var(--ac-primary);
+  animation: blink-caret 0.75s step-end infinite;
 }
 
 /* Only keep this cursor animation */
@@ -1072,12 +1084,12 @@ button:focus {
   grid-auto-columns: minmax(240px, 280px);
   gap: 1.25rem;
   overflow-x: auto;
-  padding: 0.5rem 0 1rem;
+  padding: 0.5rem 0.25rem 1.5rem; /* Added more padding around to accommodate shadows */
+  margin: 0.75rem 0.5rem; /* Added margin to ensure shadows aren't cut off */
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-ember) rgba(43, 41, 45, 0.6);
   -webkit-overflow-scrolling: touch;
-  margin: 0 -0.5rem;
 }
 
 .scroll-cards-container::-webkit-scrollbar {
@@ -1098,10 +1110,18 @@ button:focus {
   display: flex;
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  z-index: 1; /* Set base z-index */
+  margin: 4px 4px 16px 4px; /* Added margin to create space for the shadow */
 }
 
 .scroll-card:hover {
   transform: translateY(-3px);
+  /* Isolated z-index increase to prevent affecting neighboring elements */
+  z-index: 2;
+  /* Modified box-shadow to have a more subtle effect that works within the constraints */
+  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 160, 122, 0.3);
 }
 
 .scroll-card .card-icon {
@@ -1378,24 +1398,20 @@ button:focus {
 
 /* NEW: Typing animation for hero section */
 .typing-text {
-  overflow: hidden;
-  border-right: 0.15em solid var(--ac-primary);
-  white-space: nowrap;
-  letter-spacing: 0.1em;
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret 0.75s step-end infinite;
   display: inline-block;
+  padding-right: 5px;
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+/* Create a separate class for the cursor animation */
+.typing-cursor {
+  border-right: 0.15em solid var(--ac-primary);
+  animation: blink-caret 0.75s step-end infinite;
 }
 
-@keyframes blink-caret {
+/* Only keep this cursor animation */
+@keyframes cursorBlink {
   from, to { border-color: transparent }
-  50% { border-color: var(--ac-primary) }
+  50% { border-color: var(--accent-honey); }
 }
 
 /* NEW: Enhanced logo glow effect */
