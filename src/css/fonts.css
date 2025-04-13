@@ -1,17 +1,125 @@
+/* Hack Font Family */
 @font-face {
     font-family: 'Hack';
     src: local('Hack'), local('Hack Regular'),
-         url('../assets/fonts/hack-regular.woff2') format('woff');  
-     /* Corrected path */
-    font-weight: 200;
+         url('../assets/fonts/hack-regular.woff2') format('woff2');
+    font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Hack';
     src: local('Hack'), local('Hack Bold'),
-         url('../assets/fonts/hack-bold.woff2') format('woff');  
-     /* Corrected path */
+         url('../assets/fonts/hack-bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Fira Code Font Family */
+@font-face {
+    font-family: 'Fira Code';
+    src: local('Fira Code'), local('FiraCode-Regular'),
+         url('../assets/fonts/FiraCode-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: local('Fira Code Medium'), local('FiraCode-Medium'),
+         url('../assets/fonts/FiraCode-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Inter Font Family (System Font) */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    font-display: swap;
+}
+
+/* Syncopate Font Family (Alt Font) */
+@font-face {
+    font-family: 'Syncopate';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+    font-display: swap;
+}
+
+/* Font Utility Classes */
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.font-sans {
+    font-family: var(--font-sans);
+}
+
+.font-alt {
+    font-family: var(--font-alt);
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.font-regular {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+/* Text Size Utility Classes */
+.text-xs {
+    font-size: var(--font-size-xs);
+}
+
+.text-sm {
+    font-size: var(--font-size-sm);
+}
+
+.text-base {
+    font-size: var(--font-size-base);
+}
+
+.text-lg {
+    font-size: var(--font-size-lg);
+}
+
+.text-xl {
+    font-size: var(--font-size-xl);
+}
+
+.text-2xl {
+    font-size: var(--font-size-2xl);
+}
+
+.text-3xl {
+    font-size: var(--font-size-3xl);
+}
+
+.text-4xl {
+    font-size: var(--font-size-4xl);
+}
+
+.text-5xl {
+    font-size: var(--font-size-5xl);
+}
+
+.text-6xl {
+    font-size: var(--font-size-6xl);
 }
