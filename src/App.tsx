@@ -143,6 +143,31 @@ const services = [
   }
 ];
 
+// Define featuredServices based on services, adding color
+const featuredServices = [
+  {
+    ...services[0], // High-Performance Backend
+    color: 'var(--accent-ember)', // Example color
+    description: "Building scalable and efficient backend systems." // Shorter description for expertise card
+  },
+  {
+    ...services[1], // Seamless System Integration
+    color: 'var(--accent-blush)', // Example color
+    description: "Connecting disparate systems for unified workflows." // Shorter description
+  },
+  {
+    ...services[2], // Optimized Web Solutions
+    color: 'var(--accent-honey)', // Example color
+    description: "Crafting fast, responsive, and accessible web apps." // Shorter description
+  },
+  {
+    ...services[3], // Mobile Application Development
+    color: 'var(--ac-primary)', // Example color
+    description: "Developing high-performance cross-platform mobile apps." // Shorter description
+  }
+];
+
+
 // Process data from WhatWeDo component
 const process = [
   {
@@ -210,7 +235,6 @@ function App() {
         animations.initParticleSystem();
         animations.initLogoAnimation();
         animations.initHorizontalCards();
-        animations.initSocialButtons(); // Initialize social buttons functionality
         
         // Add typing animation if we have an element with id "hero-typing"
         const typingElement = document.getElementById('hero-typing');
@@ -221,11 +245,6 @@ function App() {
             'We build the future.',
           ], 100, 50, 2000);
         }
-      });
-    } else {
-      // Make sure social buttons work on other tabs too
-      import('./lib/animations').then((animations) => {
-        animations.initSocialButtons();
       });
     }
   }, [activeTab]);
@@ -337,7 +356,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#2b292e] via-[#3a353c] to-[#50424d] text-[var(--mist)] font-['Hack']">
       {/* Navbar with enhanced interactions */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(43,41,45,0.85)] backdrop-blur-md border-b border-[rgba(255,255,255,0.12)] px-4 py-3">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(43,41,45,0.85)] backdrop-blur-md border-b border-[rgba(255,255,255,0.12)] px-4 py-4 md:py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <div className="h-8 w-8 mr-2 flex items-center justify-center overflow-visible">
@@ -477,117 +496,24 @@ function App() {
                 Crafting the future with elegant code and advanced technologies
               </p>
               
-              {/* Featured Services in horizontal scrollable cards */}
-              <div className="mt-10 scale-in" style={{animationDelay: '0.4s'}}>
-                <h2 className="text-xl font-medium text-[var(--accent-blush)] mb-4">Our Expertise</h2>
-                
-                {/* Desktop: horizontal scroll cards, Mobile: 2-column grid */}
-                <div className="hidden md:grid scroll-cards-container px-2 md:px-4">
-                  <div className="glass-item scroll-card modern-card-hover">
-                    <div className="card-icon bg-[rgba(245,215,110,0.15)] text-[var(--accent-honey)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                      </svg>
+              {/* Featured Services using Tailwind Grid */}
+              <div className="fade-in" style={{animationDelay: '0.4s'}}>
+                <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent-honey)] mb-6">
+                  // Our Expertise
+                </h2>
+                {/* Updated grid classes */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {featuredServices.map((service, index) => (
+                    <div key={index} className="glass-item scroll-card modern-card-hover scale-in" style={{animationDelay: `${0.5 + index * 0.05}s`}}>
+                      <div className="card-header"> {/* Keep card-header for structure if needed */}
+                        <div className={`card-icon bg-[${service.color}15] text-[${service.color}]`}>
+                          <Icon name={service.icon} />
+                        </div>
+                        <h3 className={`text-[${service.color}]`}>{service.title}</h3>
+                      </div>
+                      <p>{service.description}</p>
                     </div>
-                    <h3 className="text-[var(--accent-honey)]">High-Performance Backend</h3>
-                    <p>Optimized systems engineered for maximum efficiency and speed</p>
-                  </div>
-                  
-                  <div className="glass-item scroll-card modern-card-hover">
-                    <div className="card-icon bg-[rgba(230,107,117,0.15)] text-[var(--accent-ember)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-[var(--accent-ember)]">System Integration</h3>
-                    <p>Seamless connectivity between disparate platforms and services</p>
-                  </div>
-                  
-                  <div className="glass-item scroll-card modern-card-hover">
-                    <div className="card-icon bg-[rgba(254,205,178,0.15)] text-[var(--accent-blush)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-[var(--accent-blush)]">Web Solutions</h3>
-                    <p>Modern web platforms that load instantly and perform flawlessly</p>
-                  </div>
-                  
-                  <div className="glass-item scroll-card modern-card-hover">
-                    <div className="card-icon bg-[rgba(255,160,122,0.15)] text-[var(--ac-primary)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                      </svg>
-                    </div>
-                    <h3 className="text-[var(--ac-primary)]">Mobile Development</h3>
-                    <p>Powerful yet lightweight applications for all devices</p>
-                  </div>
-                </div>
-                
-                {/* Mobile-specific 2-column grid layout */}
-                <div className="md:hidden grid grid-cols-2 gap-4">
-                  <div className="glass-item mobile-card">
-                    <div className="card-icon bg-[rgba(245,215,110,0.15)] text-[var(--accent-honey)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                      </svg>
-                    </div>
-                    <h3 className="text-[var(--accent-honey)] text-sm font-medium mt-2">Backend</h3>
-                    <p className="text-xs mt-1">Optimized efficient systems</p>
-                  </div>
-                  
-                  <div className="glass-item mobile-card">
-                    <div className="card-icon bg-[rgba(230,107,117,0.15)] text-[var(--accent-ember)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-[var(--accent-ember)] text-sm font-medium mt-2">Integration</h3>
-                    <p className="text-xs mt-1">Connecting platforms</p>
-                  </div>
-                  
-                  <div className="glass-item mobile-card">
-                    <div className="card-icon bg-[rgba(254,205,178,0.15)] text-[var(--accent-blush)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-[var(--accent-blush)] text-sm font-medium mt-2">Web Apps</h3>
-                    <p className="text-xs mt-1">Fast, modern platforms</p>
-                  </div>
-                  
-                  <div className="glass-item mobile-card">
-                    <div className="card-icon bg-[rgba(255,160,122,0.15)] text-[var(--ac-primary)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                      </svg>
-                    </div>
-                    <h3 className="text-[var(--ac-primary)] text-sm font-medium mt-2">Mobile Apps</h3>
-                    <p className="text-xs mt-1">Cross-platform solutions</p>
-                  </div>
-                </div>
-                
-                <div className="mt-8 md:mt-10 scale-in" style={{animationDelay: '0.6s'}}>
-                  <button 
-                    onClick={() => setActiveTab('what-we-do')} 
-                    className="px-5 py-2.5 rounded-lg glass-button text-[var(--accent-honey)] transition-all magnetic-btn"
-                  >
-                    <span className="relative z-10">Explore Our Services</span>
-                  </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -786,7 +712,7 @@ function App() {
                         {profile.company && (
                           <div className="flex items-center text-[#E6E6E6]">
                             <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 16 16">
-                              <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/>
+                              <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                             </svg>
                             {profile.company}
                           </div>
@@ -931,39 +857,21 @@ function App() {
                 contact@cosm.dev
               </a>
 
-              {/* Social links - GitHub buttons fixed with proper event binding */}
+              {/* Social links */}
               <div className="mt-12 flex justify-center space-x-6">
-                <a 
-                  href="https://github.com/cosm-dev" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="social-button bg-[rgba(255,160,122,0.15)] text-[var(--ac-primary)]"
-                  aria-label="GitHub"
-                >
+                <a href="#" className="p-3 bg-[rgba(255,160,122,0.15)] rounded-full text-[var(--ac-primary)] hover:bg-[rgba(255,160,122,0.25)] transition-all">
                   {/* GitHub icon */}
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
                 </a>
-                <a 
-                  href="https://twitter.com/cosm_dev" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="social-button bg-[rgba(230,107,117,0.15)] text-[var(--accent-ember)]"
-                  aria-label="Twitter"
-                >
+                <a href="#" className="p-3 bg-[rgba(230,107,117,0.15)] rounded-full text-[var(--accent-ember)] hover:bg-[rgba(230,107,117,0.25)] transition-all">
                   {/* Twitter/X icon */}
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
                   </svg>
                 </a>
-                <a 
-                  href="https://linkedin.com/company/cosm-dev" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="social-button bg-[rgba(245,215,110,0.15)] text-[var(--accent-honey)]"
-                  aria-label="LinkedIn"
-                >
+                <a href="#" className="p-3 bg-[rgba(245,215,110,0.15)] rounded-full text-[var(--accent-honey)] hover:bg-[rgba(245,215,110,0.25)] transition-all">
                   {/* LinkedIn icon */}
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -975,10 +883,8 @@ function App() {
         )}
       </main>
       
-      {/* Removed bottom tab navigation for phones */}
-      
       {/* Footer with subtle enhancements */}
-      <footer className="bg-[rgba(43,41,45,0.7)] backdrop-blur-md border-t border-[rgba(255,255,255,0.1)] py-8">
+      <footer className="bg-[rgba(43,41,45,0.7)] backdrop-blur-md border-t border-[rgba(255,255,255,0.1)] py-8 mb-12 md:mb-0">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-4 md:mb-0">
             <div className="h-8 w-8 mr-2 flex items-center justify-center">

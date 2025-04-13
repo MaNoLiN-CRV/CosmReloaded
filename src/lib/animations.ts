@@ -77,6 +77,18 @@ export const init3DCardEffect = () => {
   });
 };
 
+// Utility function for debouncing
+function debounce<F extends (...args: any[]) => any>(func: F, waitFor: number) {
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  return (...args: Parameters<F>): void => {
+    if (timeoutId !== null) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => func(...args), waitFor);
+  };
+}
+
 // Improved neonic grid background to cover the entire home page
 export const initNeonicGrid = () => {
   const gridContainer = document.querySelector('.hero-grid');
@@ -123,11 +135,19 @@ export const initNeonicGrid = () => {
   }
 
   // Handle window resize to ensure grid always covers the screen
-  window.addEventListener('resize', () => {
+  // Debounce the resize handler to improve performance
+  const debouncedInitNeonicGrid = debounce(() => {
     if (gridContainer) {
       initNeonicGrid(); // Re-initialize grid on resize
     }
-  });
+  }, 250); // Adjust the delay (in ms) as needed
+
+  window.addEventListener('resize', debouncedInitNeonicGrid);
+
+  // Return a cleanup function to remove the listener
+  return () => {
+    window.removeEventListener('resize', debouncedInitNeonicGrid);
+  };
 };
 
 // Enhanced particle system
@@ -416,42 +436,6 @@ export const initNavHighlight = () => {
   };
 };
 
-// Improved GitHub buttons functionality
-export function initSocialButtons() {
-  const socialButtons = document.querySelectorAll('.social-button');
-  
-  // Remove any existing event listeners (cleanup)
-  socialButtons.forEach(button => {
-    const newButton = button.cloneNode(true);
-    button.parentNode?.replaceChild(newButton, button);
-  });
-  
-  // Add new event listeners
-  document.querySelectorAll('.social-button').forEach(button => {
-    button.addEventListener('click', (e) => {
-      const target = e.currentTarget as HTMLElement;
-      
-      // Subtle click animation
-      target.style.transform = 'scale(0.95) translateY(1px)';
-      setTimeout(() => {
-        target.style.transform = '';
-      }, 150);
-      
-      // Get the href attribute
-      const link = target.getAttribute('href');
-      if (link) {
-        // Let the default link behavior work (will open in new tab due to target="_blank")
-        return true;
-      }
-    });
-    
-    // Make buttons accessible
-    if (!button.getAttribute('aria-label')) {
-      button.setAttribute('aria-label', 'Social media link');
-    }
-  });
-}
-
 // Initialize all animation systems
 export const initAllAnimations = () => {
   document.addEventListener('DOMContentLoaded', () => {
@@ -471,7 +455,6 @@ export const initAllAnimations = () => {
       initParticleSystem();
       initLogoAnimation();
       initHorizontalCards();
-      initSocialButtons();
       
       // Add typing animation
       const heroTyping = document.getElementById('hero-typing');
@@ -497,6 +480,5 @@ export default {
   initTypingAnimation,
   initParallaxEffect,
   initNavHighlight,
-  initSocialButtons,
   initAllAnimations,
 };

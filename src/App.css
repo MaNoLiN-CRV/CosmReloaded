@@ -2,6 +2,9 @@
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden; /* Prevent horizontal overflow */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Enhanced Glassmorphism Cards */
@@ -52,25 +55,6 @@
   border-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
-}
-
-/* Fixed GitHub repo cards to prevent shadow stacking issues */
-.glass-item.modern-card-hover {
-  /* Isolate each card to prevent hover effects from affecting other cards */
-  isolation: isolate;
-  position: relative;
-  transform: translateZ(0);
-  will-change: transform, box-shadow;
-}
-
-/* Override default hover class for repository cards specifically */
-a.glass-item.modern-card-hover:hover {
-  /* Less dramatic transform to avoid overlap issues */
-  transform: translateY(-3px) translateZ(0);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 160, 122, 0.3);
-  /* Don't increase z-index which causes stacking issues */
-  z-index: 1;
 }
 
 /* Enhanced Technology Icon Styling */
@@ -451,38 +435,26 @@ a.glass-item.modern-card-hover:hover {
 
 /* Modern Card Hover Effects */
 .modern-card-hover {
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  overflow: hidden;
+  /* Simple clean transform with no shadows */
+  position: relative;
+  transition: transform 0.2s ease;
 }
 
 .modern-card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12), 
-              0 0 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
 }
 
-.modern-card-hover:active {
-  transform: translateY(-1px);
-}
-
+/* Remove ALL problematic shadow effects and pseudo-elements */
+.modern-card-hover::before,
 .modern-card-hover::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(225deg, 
-                             rgba(255, 160, 122, 0.05) 0%, 
-                             rgba(245, 215, 110, 0.05) 50%, 
-                             rgba(230, 107, 117, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  border-radius: inherit;
+  display: none !important;
 }
 
-.modern-card-hover:hover::after {
-  opacity: 1;
+/* Reset any existing box-shadow */
+.modern-card-hover, 
+.modern-card-hover:hover {
+  box-shadow: none !important;
+  z-index: 1 !important;
 }
 
 /* Enhanced Modal styles */
@@ -861,88 +833,45 @@ a.glass-item.modern-card-hover:hover {
 }
 
 /* Enhanced Card Layouts */
-.scroll-cards-container {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(240px, 280px);
-  gap: 1.25rem;
-  overflow-x: auto;
-  overflow-y: hidden; /* Changed from visible to hidden to prevent vertical scrolling */
-  padding: 1rem 1rem 1.5rem; /* Added more left/right padding to prevent first card blur */
-  margin: 0;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-ember) rgba(43, 41, 45, 0.6);
-  -webkit-overflow-scrolling: touch;
-  /* Removed mask-image that was causing first card blur */
-}
-
-.scroll-cards-container::-webkit-scrollbar {
-  height: 4px;
-  background: rgba(43, 41, 45, 0.3);
-}
-
-.scroll-cards-container::-webkit-scrollbar-thumb {
-  background: var(--accent-ember);
-  border-radius: 4px;
-}
-
 .scroll-card {
-  scroll-snap-align: start;
   padding: 1.25rem;
-  height: auto; /* Changed from 100% to auto */
+  height: 100%;
   min-height: 180px;
-  max-height: 220px; /* Added max-height to prevent different heights */
   display: flex;
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
-  z-index: 1; /* Set base z-index */
-  margin: 4px 4px 16px 4px; /* Added margin to create space for the shadow */
-}
-
-.scroll-card:hover {
-  transform: translateY(-3px);
-  /* Isolated z-index increase to prevent affecting neighboring elements */
-  z-index: 2;
-  /* Modified box-shadow to have a more subtle effect that works within the constraints */
-  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 160, 122, 0.3);
+  margin: 4px; /* Adjust margin if needed for gap */
 }
 
 .card-header {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 0.75rem; /* Added margin back */
 }
 
 .card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
+  width: 2.5rem; /* 40px */
+  height: 2.5rem; /* 40px */
+  border-radius: 8px; /* Match new style */
   transition: transform 0.3s ease-in-out;
 }
 
 .scroll-card h3 {
-  margin: 0;
-  font-size: 1.25rem;
+  font-size: 1rem; /* Adjusted from 1.25rem */
   font-weight: 600;
+  line-height: 1.3; /* Added */
 }
 
 .scroll-card p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: var(--mist);
-  opacity: 0.8;
-}
-
-.scroll-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 160, 122, 0.3);
+  font-size: 0.9rem;
+  line-height: 1.5; /* Added */
+  color: #d1d1d1; /* Adjusted from var(--mist) */
+  opacity: 0.8; /* Adjusted */
 }
 
 /* Hero typing animation */
@@ -1056,11 +985,7 @@ button:focus {
     animation: logoRotate 6s ease-in-out infinite;
   }
 
-  .scroll-cards-container {
-    grid-auto-columns: 250px;
-    padding: 0.75rem 0.5rem 1.25rem;
-  }
-  
+  /* Keep .scroll-card override if needed */
   .scroll-card {
     padding: 1.25rem;
     min-height: 180px;
@@ -1070,101 +995,49 @@ button:focus {
     word-break: break-word;
   }
 
-  .scroll-cards-container {
-    grid-auto-columns: 85vw;
-    padding: 0.5rem 0 1.25rem;
-    margin: 0.5rem 0;
-    scroll-padding-left: 1rem;
-  }
-  
-  .scroll-card {
-    padding: 1.25rem;
-    min-height: 160px;
-    max-height: none;
-  }
-  
-  .hero-typing-container {
-    min-height: 3rem;
-  }
-  
-  #hero-typing {
-    font-size: 1.1rem;
+  header {
+    padding: 0.5rem 1rem !important;
+    height: 60px;
+    min-height: unset;
   }
 
-  /* Improved mobile header spacing */
-  .pt-20 {
-    padding-top: 4.5rem !important;
-  }
-  
-  /* Better logo sizing for small screens */
-  .h-32.w-32 {
-    height: 6rem !important;
-    width: 6rem !important;
-  }
-  
-  /* Smaller text on mobile */
-  .text-4xl {
-    font-size: 2.5rem !important;
+  header .h-8.w-8 {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.5rem;
   }
 
-  /* Allow some cards to wrap on mobile */
-  .scroll-cards-container {
-    scrollbar-width: none; /* Hide scrollbar on Firefox */
-    mask-image: none;
-    -webkit-mask-image: none;
-  }
-  
-  .scroll-cards-container::-webkit-scrollbar {
-    display: none; /* Hide scrollbar on Chrome/Safari */
-  }
-
-  /* Footer spacing for mobile */
-  footer {
-    margin-bottom: 4rem !important; /* Space for bottom navbar */
-  }
-
-  header.fixed {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-
-  /* Adjust top spacing for main content on mobile */
-  .pt-20 {
+  main.pt-20 {
     padding-top: 4rem !important;
   }
-  
-  /* Better hero section layout */
-  .min-h-\[70vh\] {
-    min-height: 50vh !important;
-  }
-  
-  .logo-container {
-    margin-bottom: 1.5rem !important;
+
+  header {
+    padding: 0.75rem 1rem !important; /* Override any inline styles */
+    height: auto;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
   }
 
-  /* Improved logo spacing */
-  .h-8.w-8 {
-    margin-top: 0.25rem;
+  header .h-8.w-8 {
+    height: 1.75rem;
+    width: 1.75rem;
+    margin-right: 0.5rem;
   }
   
-  /* Fixed social button styles - ensure consistent rendering across devices */
-  .social-button {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
+  header h1.text-xl, 
+  header h1.text-2xl {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+
+  .glass-card {
+    margin-top: 0.5rem; /* Add some breathing room below the header */
   }
   
-  /* Optimize hero section vertical spacing */
-  .hero-typing-container {
-    min-height: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .mb-10 {
-    margin-bottom: 1.5rem !important;
+  /* Push main content down a bit to prevent overlap with fixed header */
+  main.pt-20 {
+    padding-top: 5rem !important;
   }
 }
 
@@ -1177,10 +1050,7 @@ button:focus {
     padding: 1rem;
   }
   
-  .scroll-cards-container {
-    grid-auto-columns: 220px;
-  }
-  
+  /* Keep .scroll-card override if needed */
   .scroll-card {
     padding: 1rem;
     min-height: 160px;
@@ -1191,42 +1061,26 @@ button:focus {
     gap: 1rem;
   }
 
-  .glass-card {
-    padding: 1rem;
-    border-radius: 12px;
-  }
-  
-  .glass-item {
-    padding: 1rem;
-    border-radius: 10px;
-  }
-  
-  .scroll-cards-container {
-    grid-auto-columns: 80vw;
-    gap: 0.75rem;
-  }
-  
-  .scroll-card {
-    padding: 1rem;
+  footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 0;
+    margin-bottom: 0 !important;
   }
 
-  /* Smaller headings on very small screens */
-  .text-4xl {
-    font-size: 2rem !important;
+  .mb-12 {
+    margin-bottom: 0 !important;
+  }
+
+  footer {
+    margin-bottom: 0;
+    padding-bottom: 1rem;
   }
   
-  .text-3xl {
-    font-size: 1.5rem !important;
-  }
-
-  /* More compact hero section */
-  .min-h-\[70vh\] {
-    min-height: 60vh !important;
-  }
-
-  /* Improved github button styles for mobile */
-  .social-button {
-    padding: 0.75rem !important;
+  footer.mb-12 {
+    margin-bottom: 0 !important; /* Override margin-bottom */
   }
 }
 
@@ -1242,79 +1096,6 @@ button:focus {
   to {
     transform: rotate(360deg);
   }
-}
-
-/* Modern scrolling cards */
-.scroll-cards-container {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(240px, 280px);
-  gap: 1.25rem;
-  overflow-x: auto;
-  overflow-y: hidden; /* Changed from visible to hidden to prevent vertical scrolling */
-  padding: 1rem 1rem 1.5rem; /* Added more left/right padding to prevent first card blur */
-  margin: 0;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-ember) rgba(43, 41, 45, 0.6);
-  -webkit-overflow-scrolling: touch;
-  /* Removed mask-image that was causing first card blur */
-}
-
-.scroll-cards-container::-webkit-scrollbar {
-  height: 4px;
-  background: rgba(43, 41, 45, 0.3);
-}
-
-.scroll-cards-container::-webkit-scrollbar-thumb {
-  background: var(--accent-ember);
-  border-radius: 4px;
-}
-
-.scroll-card {
-  scroll-snap-align: start;
-  padding: 1.25rem;
-  height: auto; /* Changed from 100% to auto */
-  min-height: 180px;
-  max-height: 220px; /* Added max-height to prevent different heights */
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
-  z-index: 1; /* Set base z-index */
-  margin: 4px 4px 16px 4px; /* Added margin to create space for the shadow */
-}
-
-.scroll-card:hover {
-  transform: translateY(-3px);
-  /* Isolated z-index increase to prevent affecting neighboring elements */
-  z-index: 2;
-  /* Modified box-shadow to have a more subtle effect that works within the constraints */
-  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 160, 122, 0.3);
-}
-
-.scroll-card .card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.scroll-card h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.scroll-card p {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: #d1d1d1;
 }
 
 /* Progress bar animation */
@@ -1656,11 +1437,7 @@ button:focus {
 }
 
 /* NEW: Enhance scroll cards with depth */
-.scroll-card {
-  position: relative;
-}
-
-.scroll-card::before {
+.scroll-card::before { /* Keep this if desired */
   content: '';
   position: absolute;
   top: 0;
@@ -1771,111 +1548,426 @@ button:focus {
   transform: scale(1);
 }
 
-/* Fixed GitHub buttons styling - completely redone for better responsiveness */
-.social-button {
+body {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  transition: all 0.2s ease-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto; /* Allow main content to grow but not shrink */
+}
+
+footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  width: 100%;
   position: relative;
+  bottom: 0;
+  margin-top: auto;
+  z-index: 5;
+  background: rgba(43,41,45,0.7);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+/* Improve header layout */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 60px;
+  min-height: unset !important;
+  background: rgba(43,41,45,0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0;
+}
+
+header > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/* Logo always at the left */
+header .flex.items-center {
+  justify-content: flex-start;
+}
+
+/* Mobile menu button styles - properly shown on mobile */
+header button.md\:hidden {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 8px;
   cursor: pointer;
-  /* Adding hardware acceleration to prevent rendering issues */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
-  background-color: rgba(56, 53, 57, 0.5);
 }
 
-.social-button svg {
-  width: 24px;
-  height: 24px;
-  /* Ensure SVG renders correctly */
+/* Desktop nav is hidden on mobile, shown on desktop */
+header nav.hidden.md\:flex {
+  margin-left: auto;
+}
+
+/* Mobile navigation container - this holds the mobile menu */
+.mobile-nav-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(43,41,45,0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 49;
+  width: 100%;
+}
+
+/* Mobile tab navigation - ensure visibility and proper layout */
+.md\:hidden + div {
+  width: 100%;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+/* Mobile tab navigation buttons */
+.md\:hidden + div button {
   display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Simple hover state without animations that could cause issues */
-.social-button:hover {
-  transform: translateY(-3px) translateZ(0);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+.md\:hidden + div button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Active state for better touch feedback */
-.social-button:active {
-  transform: translateY(0) translateZ(0) scale(0.96);
+.md\:hidden + div button.active {
+  color: var(--ac-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Media query refinements */
+@media (min-width: 768px) {
+  /* Hide mobile menu button on desktop */
+  header button.md\:hidden {
+    display: none !important;
+  }
+  
+  /* Show desktop navigation on desktop */
+  header nav.hidden.md\:flex {
+    display: flex !important;
+    gap: 24px;
+    align-items: center;
+  }
+  
+  /* Hide mobile menu container on desktop */
+  .md\:hidden + div {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Ensure mobile menu button always shows on mobile */
+  header button.md\:hidden {
+    display: flex !important;
+  }
+  
+  /* Keep desktop nav hidden on mobile */
+  header nav.hidden.md\:flex {
+    display: none !important;
+  }
+  
+  /* Show mobile menu when open */
+  .md\:hidden + div.max-h-64 {
+    max-height: 300px;
+    opacity: 1;
+  }
+  
+  /* Hide mobile menu when closed */
+  .md\:hidden + div:not(.max-h-64) {
+    max-height: 0;
+    opacity: 0;
+  }
+  
+  /* Make tab buttons obvious and clickable */
+  .md\:hidden + div button {
+    opacity: 1;
+    margin-bottom: 2px;
+  }
+  
+  /* Add animation for showing tab buttons */
+  .md\:hidden + div.max-h-64 button {
+    animation: slideInDown 0.3s forwards;
+  }
+  
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* Fix media queries for proper display control */
+@media (min-width: 768px) {
+  /* Hide mobile menu button on desktop */
+  header button.md\:hidden {
+    display: none !important;
+  }
+  
+  /* Show desktop navigation on desktop */
+  header nav.hidden.md\:flex {
+    display: flex !important;
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Ensure mobile menu button always shows on mobile */
+  header button.md\:hidden {
+    display: flex !important;
+  }
+  
+  /* Keep desktop nav hidden on mobile */
+  header nav.hidden.md\:flex {
+    display: none !important;
+  }
+  
+  /* Proper mobile menu animation states */
+  .md\:hidden + div {
+    max-height: 0;
+    opacity: 0;
+  }
+  
+  .md\:hidden + div.max-h-64 {
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+
+/* Fix mobile menu button animation */
+header button.md\:hidden svg {
+  transition: transform 0.3s ease;
+}
+
+header button.md\:hidden.menu-open svg:first-child {
+  display: none;
+}
+
+header button.md\:hidden:not(.menu-open) svg:last-child {
+  display: none;
+}
+
+/* Fix the modern card hover effects to prevent flickering */
+.modern-card-hover {
+  position: relative; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  /* Remove z-index changes that cause flickering */
+  z-index: 1;
+}
+
+.modern-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  /* Don't change z-index on hover to avoid flickering */
+}
+
+/* Fixed gradient after effect for smoother transition */
+.modern-card-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(225deg, 
+                           rgba(255, 160, 122, 0.05) 0%, 
+                           rgba(245, 215, 110, 0.05) 50%, 
+                           rgba(230, 107, 117, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Fix footer positioning to ensure it's at the bottom */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+  margin-top: 60px; /* Ensure content doesn't hide under fixed header */
+}
+
+footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  padding: 1.5rem 0;
+  background: rgba(43,41,45,0.9); /* Increased opacity for visibility */
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+@media (max-width: 480px) {
+  footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0 !important;
+  }
+  
+  footer.mb-12, .mb-12 {
+    margin-bottom: 0 !important;
+  }
+  
+  /* Ensure the mobile header doesn't overlap content */
+  main.pt-20 {
+    padding-top: 60px !important;
+  }
+}
+
+/* Header layout - ensure logo is all the way left and menu button all the way right */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 50px;
+  min-height: unset !important;
+  background: rgba(43,41,45,0.7);
+  backdrop-filter: blur(8px);
+}
+
+header > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+/* Logo all the way to the left */
+header .flex.items-center {
+  justify-content: flex-start;
+  padding-left: 0.75rem;
+}
+
+/* Mobile menu button all the way to the right */
+header button.md\:hidden {
+  margin: 0;
+  padding-right: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fix desktop navigation alignment */
+header nav.hidden.md\:flex {
+  margin-left: auto;
+  padding-right: 0.75rem;
+}
+
+/* Completely new approach for card hover shadows to eliminate flickering */
+.modern-card-hover {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateZ(0);
+}
+
+/* Remove ALL previous shadow-related code for these cards */
+.modern-card-hover::before,
+.modern-card-hover::after {
+  display: none;
+}
+
+/* Brand new shadow implementation */
+.modern-card-hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Pulse effect on hover for GitHub buttons */
-.social-button::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.modern-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  /* No z-index changes */
 }
 
-.social-button:hover::after {
-  animation: social-pulse 1.5s infinite;
-  opacity: 1;
+/* Gradient effect without using pseudo-elements */
+.modern-card-hover {
+  background-image: linear-gradient(225deg, 
+    rgba(255, 160, 122, 0) 0%, 
+    rgba(245, 215, 110, 0) 50%, 
+    rgba(230, 107, 117, 0) 100%);
+  background-size: 100% 100%;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-image 0.3s ease;
 }
 
-@keyframes social-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
+.modern-card-hover:hover {
+  background-image: linear-gradient(225deg, 
+    rgba(255, 160, 122, 0.05) 0%, 
+    rgba(245, 215, 110, 0.05) 50%, 
+    rgba(230, 107, 117, 0.05) 100%);
 }
 
-/* Mobile-specific card styles for 2-column grid layout */
-.mobile-card {
-  padding: 1rem;
-  height: auto;
-  min-height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: relative;
+/* Make sure all these hover effects have proper will-change properties */
+.modern-card-hover {
+  will-change: transform, box-shadow, background-image;
 }
 
-.mobile-card .card-icon {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  margin-bottom: 0;
-}
-
-.mobile-card .card-icon svg {
-  width: 18px;
-  height: 18px;
-}
-
-.mobile-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 160, 122, 0.2);
+/* Remove all conflicting rules */
+.modern-card-hover:hover {
+  /* Important to override any other hover styles that might be causing conflicts */
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-image 0.3s ease !important;
 }
