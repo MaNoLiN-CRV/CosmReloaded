@@ -1566,19 +1566,7 @@ main {
   flex: 1 0 auto; /* Allow main content to grow but not shrink */
 }
 
-footer {
-  flex-shrink: 0; /* Prevent footer from shrinking */
-  width: 100%;
-  position: relative;
-  bottom: 0;
-  margin-top: auto;
-  z-index: 5;
-  background: rgba(43,41,45,0.7);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding: 1.5rem 0;
-  margin-top: auto;
-}
+
 
 /* Improve header layout */
 header {
@@ -1840,15 +1828,6 @@ main {
   margin-top: 60px; /* Ensure content doesn't hide under fixed header */
 }
 
-footer {
-  flex-shrink: 0;
-  width: 100%;
-  margin-top: auto;
-  padding: 1.5rem 0;
-  background: rgba(43,41,45,0.9); /* Increased opacity for visibility */
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255,255,255,0.15);
-}
 
 @media (max-width: 480px) {
   footer {
@@ -1970,4 +1949,105 @@ header nav.hidden.md\:flex {
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
               box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               background-image 0.3s ease !important;
+}
+
+/* Mobile header tab menu styling */
+.mobile-tab-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(43, 41, 45, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  z-index: 100;
+  transform-origin: top;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobile-tab-menu.hidden {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.mobile-tab-menu.visible {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.mobile-tab-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--mist);
+  transition: all 0.2s ease;
+}
+
+.mobile-tab-menu button:last-child {
+  margin-bottom: 0;
+}
+
+.mobile-tab-menu button.active {
+  background: rgba(255, 160, 122, 0.15);
+  color: var(--ac-primary);
+}
+
+.mobile-tab-menu button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+/* Fix the hamburger button styling */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 101;
+}
+
+@media (max-width: 767px) {
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Fix footer to always stick to bottom */
+html, 
+body, 
+#root {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+
+/* Override any existing margin-bottom on footer */
+footer.mb-12 {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .mobile-tab-icon {
+    display: none !important; /* Hide the tab icons on mobile */
+  }
 }
