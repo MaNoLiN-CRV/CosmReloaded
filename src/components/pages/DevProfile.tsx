@@ -1,4 +1,5 @@
 import React from 'react';
+import historial from '../data/historial';
 
 // Define interfaces for GitHub data
 interface GithubProfile {
@@ -164,6 +165,8 @@ const DevProfile: React.FC<DevProfileProps> = ({ profile, repos, loading, error,
                 </div>
               </div>
             </div>
+
+       
 
             {/* Repositories Grid with staggered animations */}
             <h2 className="text-2xl font-bold text-[var(--ac-primary)] mb-4">Latest Repositories</h2>

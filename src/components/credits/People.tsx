@@ -186,7 +186,7 @@ export default function People({ people, onProfileView }: PeopleProps) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative pt-1 pb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative pt-1">
         {/* Regular cards */}
         {people.map((person, index) => {
           const isClicked = clickedCard === person.name;
