@@ -1,7 +1,8 @@
 #root {
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  /* Prevent horizontal overflow */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -49,12 +50,6 @@
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
-}
-
-.glass-item:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
 }
 
 /* Enhanced Technology Icon Styling */
@@ -137,12 +132,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -175,14 +168,12 @@
   left: -100%;
   width: 35%;
   height: 400%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 30%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.05) 70%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 30%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.05) 70%,
+      rgba(255, 255, 255, 0) 100%);
   transform: rotate(25deg);
   animation: shimmer 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   will-change: transform, opacity;
@@ -195,14 +186,12 @@
   left: -100%;
   width: 35%;
   height: 300%;
-  background: linear-gradient(
-    to bottom right,
-    transparent,
-    rgba(255, 255, 255, 0.03) 30%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.03) 70%,
-    transparent
-  );
+  background: linear-gradient(to bottom right,
+      transparent,
+      rgba(255, 255, 255, 0.03) 30%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0.03) 70%,
+      transparent);
   transform: rotate(25deg);
   animation: shimmer-after 30s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   will-change: transform, opacity;
@@ -213,19 +202,24 @@
     left: -100%;
     opacity: 0;
   }
+
   15% {
     opacity: 0;
   }
+
   25% {
     opacity: 0.5;
   }
+
   50% {
     left: 100%;
     opacity: 0.5;
   }
+
   75% {
     opacity: 0;
   }
+
   100% {
     left: -100%;
     opacity: 0;
@@ -237,19 +231,24 @@
     left: -100%;
     opacity: 0;
   }
+
   20% {
     opacity: 0;
   }
+
   30% {
     opacity: 0.3;
   }
+
   50% {
     left: 100%;
     opacity: 0.3;
   }
+
   70% {
     opacity: 0;
   }
+
   100% {
     left: -100%;
     opacity: 0;
@@ -287,12 +286,10 @@
   left: -100%;
   width: 80%;
   height: 200%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%);
   transform: rotate(30deg);
   transition: all 1.5s;
   opacity: 0;
@@ -305,10 +302,13 @@
 
 /* Enhanced Animations */
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.9;
     transform: scale(1.03);
@@ -324,6 +324,7 @@
     opacity: 0;
     transform: translateY(15px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -335,6 +336,7 @@
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -346,6 +348,7 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -357,6 +360,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -379,9 +383,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -395,12 +402,15 @@
   0% {
     transform: scale(1);
   }
+
   40% {
     transform: scale(0.97);
   }
+
   55% {
     transform: scale(0.97);
   }
+
   100% {
     transform: scale(1);
   }
@@ -415,6 +425,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -424,9 +435,11 @@
   0% {
     filter: drop-shadow(0 0 15px rgba(255, 160, 122, 0.6));
   }
+
   50% {
     filter: drop-shadow(0 0 25px rgba(255, 160, 122, 0.9));
   }
+
   100% {
     filter: drop-shadow(0 0 15px rgba(255, 160, 122, 0.6));
   }
@@ -436,15 +449,19 @@
   0% {
     transform: rotate(0deg) scale(1);
   }
+
   25% {
     transform: rotate(3deg) scale(1.05);
   }
+
   50% {
     transform: rotate(0deg) scale(1);
   }
+
   75% {
     transform: rotate(-3deg) scale(1.05);
   }
+
   100% {
     transform: rotate(0deg) scale(1);
   }
@@ -457,18 +474,18 @@
 
 /* Text Glow Effect */
 .text-glow {
-  text-shadow: 0 0 10px rgba(255, 160, 122, 0.5), 
-               0 0 20px rgba(255, 160, 122, 0.3);
+  text-shadow: 0 0 10px rgba(255, 160, 122, 0.5),
+    0 0 20px rgba(255, 160, 122, 0.3);
 }
 
 .text-glow-ember {
-  text-shadow: 0 0 10px rgba(230, 107, 117, 0.5), 
-               0 0 20px rgba(230, 107, 117, 0.3);
+  text-shadow: 0 0 10px rgba(230, 107, 117, 0.5),
+    0 0 20px rgba(230, 107, 117, 0.3);
 }
 
 .text-glow-honey {
-  text-shadow: 0 0 10px rgba(245, 215, 110, 0.5), 
-               0 0 20px rgba(245, 215, 110, 0.3);
+  text-shadow: 0 0 10px rgba(245, 215, 110, 0.5),
+    0 0 20px rgba(245, 215, 110, 0.3);
 }
 
 /* Enhanced Person Card styling */
@@ -494,9 +511,11 @@
   0% {
     box-shadow: 0 0 0 0 rgba(255, 160, 122, 0.7);
   }
+
   70% {
     box-shadow: 0 0 0 10px rgba(255, 160, 122, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(255, 160, 122, 0);
   }
@@ -506,29 +525,6 @@
   animation: profilePulse 1.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Modern Card Hover Effects */
-.modern-card-hover {
-  /* Simple clean transform with no shadows */
-  position: relative;
-  transition: transform 0.2s ease;
-}
-
-.modern-card-hover:hover {
-  transform: translateY(-4px);
-}
-
-/* Remove ALL problematic shadow effects and pseudo-elements */
-.modern-card-hover::before,
-.modern-card-hover::after {
-  display: none !important;
-}
-
-/* Reset any existing box-shadow */
-.modern-card-hover, 
-.modern-card-hover:hover {
-  box-shadow: none !important;
-  z-index: 1 !important;
-}
 
 /* Enhanced Modal styles */
 .modal-backdrop {
@@ -608,7 +604,8 @@
 
 /* Homepage Hero */
 .hero-background {
-  position: fixed; /* Changed from absolute to fixed */
+  position: fixed;
+  /* Changed from absolute to fixed */
   top: 0;
   left: 0;
   width: 100%;
@@ -632,16 +629,22 @@
   position: absolute;
   width: 1px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.1); /* Reduced opacity and changed color */
-  border-radius: 0; /* No rounded corners */
-  box-shadow: none; /* Remove glow effect */
+  background: rgba(255, 255, 255, 0.1);
+  /* Reduced opacity and changed color */
+  border-radius: 0;
+  /* No rounded corners */
+  box-shadow: none;
+  /* Remove glow effect */
 }
 
 /* Remove the grid cell pulse animation that was causing the lights */
 @keyframes gridPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.15;
   }
+
   50% {
     opacity: 0.2;
   }
@@ -652,13 +655,11 @@
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 160, 122, 0.05) 0%,
-    rgba(245, 215, 110, 0.05) 40%,
-    rgba(230, 107, 117, 0.02) 70%,
-    transparent 100%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 160, 122, 0.05) 0%,
+      rgba(245, 215, 110, 0.05) 40%,
+      rgba(230, 107, 117, 0.02) 70%,
+      transparent 100%);
   mix-blend-mode: screen;
   pointer-events: none;
   filter: blur(40px);
@@ -691,12 +692,15 @@
     transform: translateY(0) translateX(0);
     opacity: 0;
   }
+
   20% {
     opacity: 0.8;
   }
+
   80% {
     opacity: 0.8;
   }
+
   100% {
     transform: translateY(-30vh) translateX(10vw);
     opacity: 0;
@@ -707,15 +711,19 @@
   0% {
     transform: translate(0, 0);
   }
+
   25% {
     transform: translate(20px, -15px);
   }
+
   50% {
     transform: translate(40px, 0);
   }
+
   75% {
     transform: translate(20px, 15px);
   }
+
   100% {
     transform: translate(0, 0);
   }
@@ -723,7 +731,8 @@
 
 /* Enhanced Neonic Grid and Background Effects */
 .hero-background {
-  position: fixed; /* Changed from absolute to fixed */
+  position: fixed;
+  /* Changed from absolute to fixed */
   top: 0;
   left: 0;
   width: 100%;
@@ -747,16 +756,22 @@
   position: absolute;
   width: 1px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.1); /* Reduced opacity and changed color */
-  border-radius: 0; /* No rounded corners */
-  box-shadow: none; /* Remove glow effect */
+  background: rgba(255, 255, 255, 0.1);
+  /* Reduced opacity and changed color */
+  border-radius: 0;
+  /* No rounded corners */
+  box-shadow: none;
+  /* Remove glow effect */
 }
 
 /* Remove the grid cell pulse animation that was causing the lights */
 @keyframes gridPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.15;
   }
+
   50% {
     opacity: 0.2;
   }
@@ -767,13 +782,11 @@
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 160, 122, 0.05) 0%,
-    rgba(245, 215, 110, 0.05) 40%,
-    rgba(230, 107, 117, 0.02) 70%,
-    transparent 100%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 160, 122, 0.05) 0%,
+      rgba(245, 215, 110, 0.05) 40%,
+      rgba(230, 107, 117, 0.02) 70%,
+      transparent 100%);
   mix-blend-mode: screen;
   pointer-events: none;
   filter: blur(40px);
@@ -788,13 +801,11 @@
   left: 10%;
   top: 10%;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 160, 122, 0.1) 0%,
-    rgba(245, 215, 110, 0.05) 45%,
-    rgba(230, 107, 117, 0.03) 70%,
-    transparent 100%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 160, 122, 0.1) 0%,
+      rgba(245, 215, 110, 0.05) 45%,
+      rgba(230, 107, 117, 0.03) 70%,
+      transparent 100%);
   filter: blur(60px);
   z-index: 1;
   animation: blobMove 30s infinite alternate;
@@ -804,9 +815,11 @@
   0% {
     transform: translateX(-10%) translateY(-5%);
   }
+
   50% {
     transform: translateX(10%) translateY(5%);
   }
+
   100% {
     transform: translateX(-5%) translateY(10%);
   }
@@ -862,9 +875,11 @@
   0% {
     transform: scale(1) rotate(0deg);
   }
+
   50% {
     transform: scale(1.1) rotate(5deg);
   }
+
   100% {
     transform: scale(1) rotate(0deg);
   }
@@ -874,9 +889,11 @@
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }
@@ -886,9 +903,11 @@
   0% {
     transform: scale(1) rotate(0deg);
   }
+
   50% {
     transform: scale(0.9) rotate(-5deg);
   }
+
   100% {
     transform: scale(1) rotate(0deg);
   }
@@ -899,52 +918,52 @@
     transform: scale(0) rotate(-30deg);
     opacity: 0;
   }
+
   100% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
 }
 
-/* Enhanced Card Layouts */
-.scroll-card {
-  padding: 1.25rem;
-  height: 100%;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
-  margin: 4px; /* Adjust margin if needed for gap */
-}
+
 
 .card-header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 0.75rem; /* Added margin back */
+  margin-bottom: 0.75rem;
+  /* Added margin back */
 }
 
 .card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem; /* 40px */
-  height: 2.5rem; /* 40px */
-  border-radius: 8px; /* Match new style */
+  width: 2.5rem;
+  /* 40px */
+  height: 2.5rem;
+  /* 40px */
+  border-radius: 8px;
+  /* Match new style */
   transition: transform 0.3s ease-in-out;
 }
 
 .scroll-card h3 {
-  font-size: 1rem; /* Adjusted from 1.25rem */
+  font-size: 1rem;
+  /* Adjusted from 1.25rem */
   font-weight: 600;
-  line-height: 1.3; /* Added */
+  line-height: 1.3;
+  /* Added */
 }
 
 .scroll-card p {
   font-size: 0.9rem;
-  line-height: 1.5; /* Added */
-  color: #d1d1d1; /* Adjusted from var(--mist) */
-  opacity: 0.8; /* Adjusted */
+  line-height: 1.5;
+  /* Added */
+  color: #d1d1d1;
+  /* Adjusted from var(--mist) */
+  opacity: 0.8;
+  /* Adjusted */
 }
 
 /* Hero typing animation */
@@ -971,8 +990,15 @@
 
 /* Only keep this cursor animation */
 @keyframes cursorBlink {
-  from, to { border-color: transparent }
-  50% { border-color: var(--accent-honey); }
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: var(--accent-honey);
+  }
 }
 
 /* Tab navigation styling */
@@ -1034,23 +1060,25 @@ button:focus {
   .glass-card {
     padding: 1.25rem;
   }
-  
+
   .glass-item {
     padding: 1.25rem;
   }
-  
+
   .icon-wrapper {
     width: 60px;
     height: 60px;
   }
-  
+
   .tech-icon {
     max-width: 32px;
     max-height: 32px;
   }
 
   /* Make animations more subtle on mobile */
-  .fade-in, .scale-in, .slide-in {
+  .fade-in,
+  .scale-in,
+  .slide-in {
     animation-duration: 0.4s;
   }
 
@@ -1063,8 +1091,10 @@ button:focus {
     padding: 1.25rem;
     min-height: 180px;
   }
-  
-  h1, h2, h3 {
+
+  h1,
+  h2,
+  h3 {
     word-break: break-word;
   }
 
@@ -1085,7 +1115,8 @@ button:focus {
   }
 
   header {
-    padding: 0.75rem 1rem !important; /* Override any inline styles */
+    padding: 0.75rem 1rem !important;
+    /* Override any inline styles */
     height: auto;
     min-height: 60px;
     display: flex;
@@ -1097,17 +1128,18 @@ button:focus {
     width: 1.75rem;
     margin-right: 0.5rem;
   }
-  
-  header h1.text-xl, 
+
+  header h1.text-xl,
   header h1.text-2xl {
     font-size: 1.1rem;
     line-height: 1.5rem;
   }
 
   .glass-card {
-    margin-top: 0.5rem; /* Add some breathing room below the header */
+    margin-top: 0.5rem;
+    /* Add some breathing room below the header */
   }
-  
+
   /* Push main content down a bit to prevent overlap with fixed header */
   main.pt-20 {
     padding-top: 5rem !important;
@@ -1118,20 +1150,15 @@ button:focus {
   .glass-card {
     padding: 1rem;
   }
-  
+
   .glass-item {
     padding: 1rem;
   }
-  
+
   /* Keep .scroll-card override if needed */
   .scroll-card {
     padding: 1rem;
     min-height: 160px;
-  }
-
-  /* Fix service cards layout on small screens */
-  .service-card .flex-col.md\:flex-row {
-    gap: 1rem;
   }
 
   footer {
@@ -1151,9 +1178,10 @@ button:focus {
     margin-bottom: 0;
     padding-bottom: 1rem;
   }
-  
+
   footer.mb-12 {
-    margin-bottom: 0 !important; /* Override margin-bottom */
+    margin-bottom: 0 !important;
+    /* Override margin-bottom */
   }
 }
 
@@ -1166,6 +1194,7 @@ button:focus {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -1174,12 +1203,10 @@ button:focus {
 /* Progress bar animation */
 .progress-bar {
   height: 4px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-ember) 0%,
-    var(--ac-primary) 50%,
-    var(--accent-honey) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--accent-ember) 0%,
+      var(--ac-primary) 50%,
+      var(--accent-honey) 100%);
   width: 0;
   transition: width 1s ease;
   border-radius: 2px;
@@ -1219,12 +1246,10 @@ button:focus {
   left: -100%;
   width: 50%;
   height: 300%;
-  background: linear-gradient(
-    to bottom right,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(to bottom right,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transform: rotate(30deg);
   animation: shimmer 7s infinite;
 }
@@ -1238,7 +1263,7 @@ button:focus {
 
 .card-3d-effect:hover {
   transform: rotateY(5deg) rotateX(5deg) scale(1.02);
-  box-shadow: 
+  box-shadow:
     -5px 5px 20px rgba(0, 0, 0, 0.2),
     -15px 15px 30px rgba(0, 0, 0, 0.1);
 }
@@ -1261,11 +1286,9 @@ button:focus {
   border-radius: inherit;
   pointer-events: none;
   transition: opacity 0.3s;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 160, 122, 0.3),
-    transparent 70%
-  );
+  background: radial-gradient(circle at center,
+      rgba(255, 160, 122, 0.3),
+      transparent 70%);
   z-index: -1;
 }
 
@@ -1278,12 +1301,10 @@ button:focus {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(
-    90deg,
-    var(--accent-ember) 0%,
-    var(--ac-primary) 50%,
-    var(--accent-honey) 100%
-  );
+  background-image: linear-gradient(90deg,
+      var(--accent-ember) 0%,
+      var(--ac-primary) 50%,
+      var(--accent-honey) 100%);
   display: inline-block;
   position: relative;
 }
@@ -1293,12 +1314,10 @@ button:focus {
   position: absolute;
   left: 0;
   top: 0;
-  background-image: linear-gradient(
-    90deg,
-    var(--accent-honey) 0%,
-    var(--ac-primary) 50%,
-    var(--accent-ember) 100%
-  );
+  background-image: linear-gradient(90deg,
+      var(--accent-honey) 0%,
+      var(--ac-primary) 50%,
+      var(--accent-ember) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1425,8 +1444,15 @@ button:focus {
 
 /* Only keep this cursor animation */
 @keyframes cursorBlink {
-  from, to { border-color: transparent }
-  50% { border-color: var(--accent-honey); }
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: var(--accent-honey);
+  }
 }
 
 /* NEW: Enhanced logo glow effect */
@@ -1439,10 +1465,11 @@ button:focus {
   0% {
     filter: drop-shadow(0 0 5px rgba(255, 160, 122, 0.3));
   }
+
   50% {
-    filter: drop-shadow(0 0 15px rgba(255, 160, 122, 0.8)) 
-           drop-shadow(0 0 30px rgba(255, 160, 122, 0.4));
+    filter: drop-shadow(0 0 15px rgba(255, 160, 122, 0.8)) drop-shadow(0 0 30px rgba(255, 160, 122, 0.4));
   }
+
   100% {
     filter: drop-shadow(0 0 5px rgba(255, 160, 122, 0.3));
   }
@@ -1468,7 +1495,7 @@ button:focus {
   left: 0;
   height: 2px;
   background-color: var(--ac-primary);
-  transition: 
+  transition:
     width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -1501,16 +1528,17 @@ button:focus {
 }
 
 /* NEW: Enhance scroll cards with depth */
-.scroll-card::before { /* Keep this if desired */
+.scroll-card::before {
+  /* Keep this if desired */
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 100%;
-  background: linear-gradient(to bottom, 
-    rgba(255, 255, 255, 0.1) 0%, 
-    transparent 15%);
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 15%);
   border-radius: inherit;
   pointer-events: none;
 }
@@ -1551,12 +1579,10 @@ button:focus {
   height: 60vw;
   top: -20vw;
   left: -20vw;
-  background: radial-gradient(
-    circle,
-    rgba(255, 160, 122, 0.2) 0%,
-    rgba(230, 107, 117, 0.2) 50%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 160, 122, 0.2) 0%,
+      rgba(230, 107, 117, 0.2) 50%,
+      transparent 70%);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   filter: blur(30px);
   animation: blob-morph 15s infinite alternate ease-in-out;
@@ -1568,56 +1594,31 @@ button:focus {
   0% {
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   }
+
   25% {
     border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
   }
+
   50% {
     border-radius: 50% 50% 30% 70% / 50% 30% 70% 50%;
   }
+
   75% {
     border-radius: 30% 70% 70% 30% / 70% 30% 30% 70%;
   }
+
   100% {
     border-radius: 70% 30% 30% 70% / 30% 70% 70% 30%;
   }
 }
 
-/* NEW: Enhanced service card styling */
-.service-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.service-card::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 0.15) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transform: scale(1.5);
-  transition: 
-    transform 1s cubic-bezier(0.23, 1, 0.32, 1),
-    opacity 1s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.service-card:hover::after {
-  opacity: 0.5;
-  transform: scale(1);
-}
-
+/* Fix footer positioning to ensure it's at the bottom */
 body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   margin: 0;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-x: hidden;
 }
 
 #root {
@@ -1627,10 +1628,10 @@ body {
 }
 
 main {
-  flex: 1 0 auto; /* Allow main content to grow but not shrink */
+  flex: 1 0 auto;
+  margin-top: 60px;
+  /* Ensure content doesn't hide under fixed header */
 }
-
-
 
 /* Improve header layout */
 header {
@@ -1645,13 +1646,13 @@ header {
   z-index: 50;
   height: 60px;
   min-height: unset !important;
-  background: rgba(43,41,45,0.8);
+  background: rgba(43, 41, 45, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 0;
 }
 
-header > div {
+header>div {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1687,7 +1688,7 @@ header nav.hidden.md\:flex {
   top: 60px;
   left: 0;
   right: 0;
-  background: rgba(43,41,45,0.95);
+  background: rgba(43, 41, 45, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1696,14 +1697,14 @@ header nav.hidden.md\:flex {
 }
 
 /* Mobile tab navigation - ensure visibility and proper layout */
-.md\:hidden + div {
+.md\:hidden+div {
   width: 100%;
   transition: max-height 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
 }
 
 /* Mobile tab navigation buttons */
-.md\:hidden + div button {
+.md\:hidden+div button {
   display: block;
   width: 100%;
   text-align: left;
@@ -1711,74 +1712,77 @@ header nav.hidden.md\:flex {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.md\:hidden + div button:hover {
+.md\:hidden+div button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.md\:hidden + div button.active {
+.md\:hidden+div button.active {
   color: var(--ac-primary);
   background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Media query refinements */
 @media (min-width: 768px) {
+
   /* Hide mobile menu button on desktop */
   header button.md\:hidden {
     display: none !important;
   }
-  
+
   /* Show desktop navigation on desktop */
   header nav.hidden.md\:flex {
     display: flex !important;
     gap: 24px;
     align-items: center;
   }
-  
+
   /* Hide mobile menu container on desktop */
-  .md\:hidden + div {
+  .md\:hidden+div {
     display: none !important;
   }
 }
 
 @media (max-width: 767px) {
+
   /* Ensure mobile menu button always shows on mobile */
   header button.md\:hidden {
     display: flex !important;
   }
-  
+
   /* Keep desktop nav hidden on mobile */
   header nav.hidden.md\:flex {
     display: none !important;
   }
-  
+
   /* Show mobile menu when open */
-  .md\:hidden + div.max-h-64 {
+  .md\:hidden+div.max-h-64 {
     max-height: 300px;
     opacity: 1;
   }
-  
+
   /* Hide mobile menu when closed */
-  .md\:hidden + div:not(.max-h-64) {
+  .md\:hidden+div:not(.max-h-64) {
     max-height: 0;
     opacity: 0;
   }
-  
+
   /* Make tab buttons obvious and clickable */
-  .md\:hidden + div button {
+  .md\:hidden+div button {
     opacity: 1;
     margin-bottom: 2px;
   }
-  
+
   /* Add animation for showing tab buttons */
-  .md\:hidden + div.max-h-64 button {
+  .md\:hidden+div.max-h-64 button {
     animation: slideInDown 0.3s forwards;
   }
-  
+
   @keyframes slideInDown {
     from {
       transform: translateY(-10px);
       opacity: 0;
     }
+
     to {
       transform: translateY(0);
       opacity: 1;
@@ -1788,11 +1792,12 @@ header nav.hidden.md\:flex {
 
 /* Fix media queries for proper display control */
 @media (min-width: 768px) {
+
   /* Hide mobile menu button on desktop */
   header button.md\:hidden {
     display: none !important;
   }
-  
+
   /* Show desktop navigation on desktop */
   header nav.hidden.md\:flex {
     display: flex !important;
@@ -1802,23 +1807,24 @@ header nav.hidden.md\:flex {
 }
 
 @media (max-width: 767px) {
+
   /* Ensure mobile menu button always shows on mobile */
   header button.md\:hidden {
     display: flex !important;
   }
-  
+
   /* Keep desktop nav hidden on mobile */
   header nav.hidden.md\:flex {
     display: none !important;
   }
-  
+
   /* Proper mobile menu animation states */
-  .md\:hidden + div {
+  .md\:hidden+div {
     max-height: 0;
     opacity: 0;
   }
-  
-  .md\:hidden + div.max-h-64 {
+
+  .md\:hidden+div.max-h-64 {
     max-height: 300px;
     opacity: 1;
   }
@@ -1837,21 +1843,32 @@ header button.md\:hidden:not(.menu-open) svg:last-child {
   display: none;
 }
 
-/* Fix the modern card hover effects to prevent flickering */
 .modern-card-hover {
-  position: relative; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 2;
+  transition:
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-image 0.3s ease;
   transform: translateZ(0);
   backface-visibility: hidden;
-  will-change: transform;
-  /* Remove z-index changes that cause flickering */
-  z-index: 1;
+  will-change: transform, box-shadow, background-image;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(225deg,
+      rgba(255, 160, 122, 0) 0%,
+      rgba(245, 215, 110, 0) 50%,
+      rgba(230, 107, 117, 0) 100%);
+  background-size: 100% 100%;
 }
 
 .modern-card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  /* Don't change z-index on hover to avoid flickering */
+  z-index: 10;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-image: linear-gradient(225deg,
+      rgba(255, 160, 122, 0.05) 0%,
+      rgba(245, 215, 110, 0.05) 50%,
+      rgba(230, 107, 117, 0.05) 100%);
 }
 
 /* Fixed gradient after effect for smoother transition */
@@ -1862,35 +1879,16 @@ header button.md\:hidden:not(.menu-open) svg:last-child {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(225deg, 
-                           rgba(255, 160, 122, 0.05) 0%, 
-                           rgba(245, 215, 110, 0.05) 50%, 
-                           rgba(230, 107, 117, 0.05) 100%);
+  background: linear-gradient(225deg,
+      rgba(255, 160, 122, 0.05) 0%,
+      rgba(245, 215, 110, 0.05) 50%,
+      rgba(230, 107, 117, 0.05) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: inherit;
   pointer-events: none;
 }
 
-/* Fix footer positioning to ensure it's at the bottom */
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  overflow-x: hidden;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1 0 auto;
-  margin-top: 60px; /* Ensure content doesn't hide under fixed header */
-}
 
 
 @media (max-width: 480px) {
@@ -1901,11 +1899,12 @@ main {
     right: 0;
     margin-bottom: 0 !important;
   }
-  
-  footer.mb-12, .mb-12 {
+
+  footer.mb-12,
+  .mb-12 {
     margin-bottom: 0 !important;
   }
-  
+
   /* Ensure the mobile header doesn't overlap content */
   main.pt-20 {
     padding-top: 60px !important;
@@ -1926,11 +1925,11 @@ header {
   z-index: 50;
   height: 50px;
   min-height: unset !important;
-  background: rgba(43,41,45,0.7);
+  background: rgba(43, 41, 45, 0.7);
   backdrop-filter: blur(8px);
 }
 
-header > div {
+header>div {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1959,82 +1958,18 @@ header nav.hidden.md\:flex {
   padding-right: 0.75rem;
 }
 
-/* Completely new approach for card hover shadows to eliminate flickering */
-.modern-card-hover {
-  position: relative;
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translateZ(0);
+.card-hover-effect {
+  transition:
+    transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, box-shadow;
 }
 
-/* Remove ALL previous shadow-related code for these cards */
-.modern-card-hover::before,
-.modern-card-hover::after {
-  display: none;
+.card-hover-effect:hover {
+  transform: translateY(-8px) scale(1.045);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 2;
 }
-
-/* Brand new shadow implementation */
-.modern-card-hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modern-card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  /* No z-index changes */
-}
-
-/* Gradient effect without using pseudo-elements */
-.modern-card-hover {
-  background-image: linear-gradient(225deg, 
-    rgba(255, 160, 122, 0) 0%, 
-    rgba(245, 215, 110, 0) 50%, 
-    rgba(230, 107, 117, 0) 100%);
-  background-size: 100% 100%;
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background-image 0.3s ease;
-}
-
-.modern-card-hover:hover {
-  background-image: linear-gradient(225deg, 
-    rgba(255, 160, 122, 0.05) 0%, 
-    rgba(245, 215, 110, 0.05) 50%, 
-    rgba(230, 107, 117, 0.05) 100%);
-}
-
-/* Make sure all these hover effects have proper will-change properties */
-.modern-card-hover {
-  will-change: transform, box-shadow, background-image;
-}
-
-/* Remove all conflicting rules */
-.modern-card-hover:hover {
-  /* Important to override any other hover styles that might be causing conflicts */
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background-image 0.3s ease !important;
-}
-
-
-
-
-/* Fix footer to always stick to bottom */
-html, 
-body, 
-#root {
-  margin: 0;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
 
 
 /* Override any existing margin-bottom on footer */
@@ -2044,6 +1979,7 @@ footer.mb-12 {
 
 @media (max-width: 767px) {
   .mobile-tab-icon {
-    display: none !important; /* Hide the tab icons on mobile */
+    display: none !important;
+    /* Hide the tab icons on mobile */
   }
 }

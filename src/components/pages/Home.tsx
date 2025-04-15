@@ -16,7 +16,7 @@ interface HomeProps {
 }
 
 const Icon: React.FC<IconProps> = ({ name }) => {
-  switch(name) {
+  switch (name) {
     case 'server':
       return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -55,7 +55,7 @@ const Icon: React.FC<IconProps> = ({ name }) => {
 
 const Home: React.FC<HomeProps> = ({ featuredServices }) => {
   const heroRef = useRef<HTMLElement>(null);
-  
+
   useEffect(() => {
     // Import dynamically to avoid issues with SSR
     import('../../lib/animations').then((animations) => {
@@ -63,7 +63,7 @@ const Home: React.FC<HomeProps> = ({ featuredServices }) => {
       animations.initParticleSystem();
       animations.initLogoAnimation();
       animations.initHorizontalCards();
-      
+
       // Add typing animation if we have an element with id "hero-typing"
       const typingElement = document.getElementById('hero-typing');
       if (typingElement) {
@@ -85,46 +85,55 @@ const Home: React.FC<HomeProps> = ({ featuredServices }) => {
         <div className="hero-particles"></div>
         <div className="blob-gradient"></div>
       </div>
-      
-      <div className="relative z-10 text-center w-full px-4">
-        <div className="logo-container mb-8 md:mb-10">
-          <div className="h-32 w-32 md:h-40 md:w-40 mx-auto flex items-center justify-center transform transition-all duration-700 hover:scale-105">
-            <img 
-              src="/C.svg" 
-              alt="Cosm Logo" 
+
+      <div className="py-8 relative z-10 text-center w-full px-4">
+        <div className="logo-container mb-8 md:mb-10 fade-in" style={{ animationDelay: '0.3s', animationDuration: '2s' }}>
+          <div className="h-44 w-44 md:h-56 md:w-56 mx-auto flex items-center justify-center transform transition-all duration-700 hover:scale-105">
+            <img
+              src="/C.svg"
+              alt="Cosm Logo"
               className="w-full h-full object-contain enhanced-logo-glow"
             />
           </div>
         </div>
-        
+
         <h1 className="text-4xl md:text-6xl font-bold mb-4 md:mb-6">
-          <span className="bg-gradient-to-r from-[var(--accent-ember)] to-[var(--ac-primary)] text-transparent bg-clip-text">Cosm</span>
+          <span className="bg-gradient-to-r from-[var(--accent-ember)] to-[var(--ac-primary)] text-transparent bg-clip-text fade-in"
+            style={{ animationDelay: '0.3s', animationDuration: '2s' }}>Cosm</span>
         </h1>
-        
+
         <div className="hero-typing-container">
-          <p id="hero-typing" className="text-lg md:text-xl fade-in" style={{animationDelay: '0.2s'}}></p>
+          <p id="hero-typing" className="text-lg md:text-xl fade-in" style={{ animationDelay: '0.3s' }}></p>
         </div>
-        
-        <p className="text-lg md:text-xl text-[#d1d1d1] max-w-xl mx-auto mb-10 fade-in" style={{animationDelay: '0.3s'}}>
+
+        <p className="text-lg md:text-xl text-[#d1d1d1] max-w-xl mx-auto mb-10 fade-in" style={{ animationDelay: '0.3s' }}>
           Crafting the future with elegant code and advanced technologies
         </p>
-        
+
         {/* Featured Services using Tailwind Grid */}
-        <div className="fade-in" style={{animationDelay: '0.4s'}}>
+        <div className="fade-in" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent-honey)] mb-6">
             // Our Expertise
           </h2>
           {/* Updated grid classes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto items-stretch">
             {featuredServices.map((service, index) => (
-              <div key={index} className="glass-item scroll-card modern-card-hover scale-in" style={{animationDelay: `${0.5 + index * 0.05}s`}}>
-                <div className="card-header">
-                  <div className={`card-icon bg-[${service.color}15] text-[${service.color}]`}>
-                    <Icon name={service.icon} />
+              <div
+                className="scale-in h-full"
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+                key={index}
+              >
+                <div className="glass-item modern-card-hover flex flex-col h-full" style={{ animationDelay: `${0.5 + index * 0.05}s` }}>
+                  <div className="card-header">
+                    <div className={`card-icon bg-[${service.color}15] text-[${service.color}]`}>
+                      <Icon name={service.icon} />
+                    </div>
+                    <h3 className={`text-base md:text-lg font-semibold text-[${service.color}]`}>
+                      {service.title}
+                    </h3>
                   </div>
-                  <h3 className={`text-[${service.color}]`}>{service.title}</h3>
+                  <p>{service.description}</p>
                 </div>
-                <p>{service.description}</p>
               </div>
             ))}
           </div>

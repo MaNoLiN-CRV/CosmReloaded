@@ -149,9 +149,15 @@ const WhatWeDo: React.FC = () => {
           // Our Services
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          > 
             {services.map((service, index) => (
-              <div key={index} className="glass-item group p-8 relative overflow-hidden modern-card-hover service-card scale-in" style={{ animationDelay: `${0.1 + index * 0.1}s` }}>
+               <div
+               className="scale-in"
+               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+               key={index}
+             >
+              <div key={index} className="glass-item group p-8 relative overflow-hidden modern-card-hover h-full" style={{ animationDelay: `${0.1 + index * 0.1}s` }}>
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[var(--accent-honey)] to-transparent opacity-10 rounded-bl-full"></div>
                 <div className="flex flex-col md:flex-row md:items-start mb-6 gap-4">
                   <div className="p-3 bg-[rgba(245,215,110,0.15)] rounded-lg text-[var(--accent-honey)] flex-shrink-0">
@@ -172,6 +178,7 @@ const WhatWeDo: React.FC = () => {
                     </li>
                   ))}
                 </ul>
+              </div>
               </div>
             ))}
           </div>

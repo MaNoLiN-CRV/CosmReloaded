@@ -111,10 +111,10 @@ export default function People({ people, onProfileView }: PeopleProps) {
 
           <div className="md:flex gap-6">
             {/* Left column: Person info */}
-            <div className="md:w-1/3 flex flex-col items-center md:items-start mb-6 md:mb-0 fade-in" style={{ opacity: 0, animationDelay: '0.1s' }}>
+            <div className="md:w-1/3 flex flex-col items-center mb-6 md:mb-0 fade-in" style={{ opacity: 0, animationDelay: '0.1s' }}>
               {selectedPerson.image && (
                 <div className="relative mx-auto md:mx-0 mb-4 scale-in" style={{ opacity: 0, animationDelay: '0.2s' }}>
-                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[var(--accent-ember)] to-[var(--ac-primary)] opacity-75 blur animate-pulse"></div>
+                  <div className="absolute -inset-1 rounded-full"></div>
                   <img 
                     alt={selectedPerson.name} 
                     src={`/${selectedPerson.image}`} 
@@ -208,7 +208,7 @@ export default function People({ people, onProfileView }: PeopleProps) {
               <div className="flex flex-col items-center sm:flex-row p-6 gap-5 flex-grow">
                 {person.image && (
                   <div className="relative flex-shrink-0 mx-auto sm:mx-0 profile-image-wrapper">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[var(--accent-ember)] to-[var(--ac-primary)] opacity-75 blur group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute -inset-1"></div>
                     <img 
                       alt={person.name} 
                       src={`/${person.image}`} 
@@ -230,7 +230,7 @@ export default function People({ people, onProfileView }: PeopleProps) {
               </div>
               
               {/* Team card overlay with details preview */}
-              <div className="team-overlay">
+              <div className="team-overlay hidden sm:block">
                 <p className="text-sm text-[var(--mist)] mb-2 line-clamp-2">
                   {person.bio ? person.bio.substring(0, 120) + '...' : `Expert in ${person.primaryRole}`}
                 </p>

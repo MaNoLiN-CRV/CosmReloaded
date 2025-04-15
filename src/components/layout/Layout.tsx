@@ -13,16 +13,16 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
     <div className="min-h-screen bg-gradient-to-br from-[#2b292e] via-[#3a353c] to-[#50424d] text-[var(--mist)] font-['Hack'] flex flex-col">
       {/* Navbar with enhanced interactions */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(43,41,45,0.85)] backdrop-blur-md border-b border-[rgba(255,255,255,0.12)] px-4 py-4 md:py-3">
-        <div className="max-w-7xl mx-auto flex items-center relative">
-          <div className="flex items-center">
-            <div className="h-8 w-8 mr-2 flex items-center justify-center overflow-visible">
+        <div className=" flex relative w-full">
+          <div className="flex flex-1 ">
+            <div className="h-10 w-10 mr-2 flex  overflow-visible">
               <img src="/C.svg" alt="Cosm Logo" className="w-full h-full object-contain" />
             </div>
             <h1 className="text-xl md:text-2xl font-bold text-[var(--ac-primary)]">Cosm</h1>
           </div>
 
           {/* Desktop navigation with active indicators */}
-          <nav className="hidden md:flex gap-6 ml-auto">
+          <nav className="hidden md:flex gap-6">
             <button 
               onClick={() => setActiveTab('home')}
               className={`nav-link ${activeTab === 'home' ? 'text-[var(--ac-primary)] active' : 'text-[var(--accent-ember)]'} hover:text-[var(--ac-primary)] transition-colors`}
@@ -119,7 +119,7 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
       </main>
       
       {/* Footer with subtle enhancements */}
-      <footer className="bg-[rgba(43,41,45,0.7)] backdrop-blur-md border-t border-[rgba(255,255,255,0.1)] py-8 mb-12 md:mb-0">
+      <footer className="bg-[rgba(43,41,45,0.7)] backdrop-blur-md border-t border-[rgba(255,255,255,0.1)] py-4 mb-12 md:mb-0">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-4 md:mb-0">
             <div className="h-8 w-8 mr-2 flex items-center justify-center">
