@@ -7,63 +7,22 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showTabMenu, setShowTabMenu] = useState(false);
-  
-  // Toggle the tab menu
-  const toggleTabMenu = () => {
-    setShowTabMenu(!showTabMenu);
-  };
-  
-  // Handle tab change
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    setShowTabMenu(false);
-  };
-  
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#2b292e] via-[#3a353c] to-[#50424d] text-[var(--mist)] font-['Hack'] flex flex-col">
       {/* Navbar with enhanced interactions */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(43,41,45,0.85)] backdrop-blur-md border-b border-[rgba(255,255,255,0.12)] px-4 py-4 md:py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center relative">
           <div className="flex items-center">
             <div className="h-8 w-8 mr-2 flex items-center justify-center overflow-visible">
               <img src="/C.svg" alt="Cosm Logo" className="w-full h-full object-contain" />
             </div>
             <h1 className="text-xl md:text-2xl font-bold text-[var(--ac-primary)]">Cosm</h1>
           </div>
-          
-          {/* Mobile tab menu toggle button */}
-          <button 
-            className="md:hidden mobile-menu-toggle mr-2"
-            onClick={toggleTabMenu}
-            aria-label="Toggle navigation menu"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--mist)]">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-          </button>
-          
-          {/* Mobile menu button with animation */}
-          <button 
-            className="md:hidden text-[var(--mist)] focus:outline-none transition-transform duration-300 ease-in-out"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rotate-90">
-                <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="4" x2="20" y1="12" y2="12"></line>
-                <line x1="4" x2="20" y1="6" y2="6"></line>
-                <line x1="4" x2="20" y1="18" y2="18"></line>
-              </svg>
-            )}
-          </button>
-          
+
           {/* Desktop navigation with active indicators */}
-          <nav className="hidden md:flex gap-6">
+          <nav className="hidden md:flex gap-6 ml-auto">
             <button 
               onClick={() => setActiveTab('home')}
               className={`nav-link ${activeTab === 'home' ? 'text-[var(--ac-primary)] active' : 'text-[var(--accent-ember)]'} hover:text-[var(--ac-primary)] transition-colors`}
@@ -95,81 +54,62 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
               Contact
             </button>
           </nav>
+
+          {/* Hamburger button for mobile (centered animation) */}
+          <button
+            className="md:hidden absolute right-0 z-50 flex items-center justify-center w-10 h-10 focus:outline-none"
+            aria-label="Open menu"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            style={{ padding: 0 }}
+          >
+            <span
+              className={`block absolute w-7 h-0.5 bg-[var(--ac-primary)] rounded transition-all duration-300 ease-in-out origin-center
+                ${mobileMenuOpen ? 'rotate-45' : '-translate-y-2'}
+              `}
+              style={{ left: '50%', top: '50%', transform: mobileMenuOpen ? 'translate(-50%, -50%) rotate(45deg)' : 'translate(-50%, calc(-50% - 8px))' }}
+            ></span>
+            <span
+              className={`block absolute w-7 h-0.5 bg-[var(--ac-primary)] rounded transition-all duration-300 ease-in-out origin-center
+                ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}
+              `}
+              style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
+            ></span>
+            <span
+              className={`block absolute w-7 h-0.5 bg-[var(--ac-primary)] rounded transition-all duration-300 ease-in-out origin-center
+                ${mobileMenuOpen ? '-rotate-45' : 'translate-y-2'}
+              `}
+              style={{ left: '50%', top: '50%', transform: mobileMenuOpen ? 'translate(-50%, -50%) rotate(-45deg)' : 'translate(-50%, calc(-50% + 8px))' }}
+            ></span>
+          </button>
         </div>
-        
-        {/* Enhanced mobile navigation with animations */}
-        <div className={`md:hidden mt-2 pb-2 overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <nav className="flex flex-col gap-3">
-            <button 
-              onClick={() => { setActiveTab('home'); setIsMenuOpen(false); }}
-              className={`text-left px-2 py-1 ${activeTab === 'home' ? 'text-[var(--ac-primary)]' : 'text-[var(--accent-ember)]'} hover:text-[var(--ac-primary)] transition-colors ${isMenuOpen ? 'slide-in' : ''}`}
-              style={{animationDelay: '0.1s'}}
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => { setActiveTab('what-we-do'); setIsMenuOpen(false); }}
-              className={`text-left px-2 py-1 ${activeTab === 'what-we-do' ? 'text-[var(--ac-primary)]' : 'text-[var(--accent-honey)]'} hover:text-[var(--ac-primary)] transition-colors ${isMenuOpen ? 'slide-in' : ''}`}
-              style={{animationDelay: '0.15s'}}
-            >
-              What We Do
-            </button>
-            <button 
-              onClick={() => { setActiveTab('team'); setIsMenuOpen(false); }}
-              className={`text-left px-2 py-1 ${activeTab === 'team' ? 'text-[var(--ac-primary)]' : 'text-[var(--accent-blush)]'} hover:text-[var(--ac-primary)] transition-colors ${isMenuOpen ? 'slide-in' : ''}`}
-              style={{animationDelay: '0.2s'}}
-            >
-              Team
-            </button>
-            <button 
-              onClick={() => { setActiveTab('tech'); setIsMenuOpen(false); }}
-              className={`text-left px-2 py-1 ${activeTab === 'tech' ? 'text-[var(--ac-primary)]' : 'text-[var(--accent-honey)]'} hover:text-[var(--ac-primary)] transition-colors ${isMenuOpen ? 'slide-in' : ''}`}
-              style={{animationDelay: '0.25s'}}
-            >
-              Technologies
-            </button>
-            <button 
-              onClick={() => { setActiveTab('contact'); setIsMenuOpen(false); }}
-              className={`text-left px-2 py-1 ${activeTab === 'contact' ? 'text-[var(--ac-primary)]' : 'text-[var(--acc-secondary)]'} hover:text-[var(--ac-primary)] transition-colors ${isMenuOpen ? 'slide-in' : ''}`}
-              style={{animationDelay: '0.3s'}}
-            >
-              Contact
-            </button>
-          </nav>
-        </div>
-        
-        {/* Mobile Tab Menu */}
-        <div className={`mobile-tab-menu md:hidden ${showTabMenu ? 'visible' : 'hidden'}`}>
-          <button
-            className={`${activeTab === 'home' ? 'active' : ''}`}
-            onClick={() => handleTabChange('home')}
-          >
-            Home
-          </button>
-          <button
-            className={`${activeTab === 'what-we-do' ? 'active' : ''}`}
-            onClick={() => handleTabChange('what-we-do')}
-          >
-            What We Do
-          </button>
-          <button
-            className={`${activeTab === 'team' ? 'active' : ''}`}
-            onClick={() => handleTabChange('team')}
-          >
-            Team
-          </button>
-          <button
-            className={`${activeTab === 'tech' ? 'active' : ''}`}
-            onClick={() => handleTabChange('tech')}
-          >
-            Technologies
-          </button>
-          <button
-            className={`${activeTab === 'contact' ? 'active' : ''}`}
-            onClick={() => handleTabChange('contact')}
-          >
-            Contact
-          </button>
+
+        {/* Mobile menu (animated, right-aligned, smaller) */}
+        <div
+          className={`md:hidden absolute right-4 top-[60px] w-44 bg-[rgba(43,41,45,0.97)] backdrop-blur-lg border border-[rgba(255,255,255,0.1)] rounded-xl shadow-xl overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100 pointer-events-auto' : 'max-h-0 opacity-0 pointer-events-none'}`}
+          style={{ transitionProperty: 'max-height, opacity' }}
+        >
+          <div className="flex flex-col py-2 px-2">
+            {[
+              { tab: 'home', label: 'Home', color: 'var(--accent-ember)' },
+              { tab: 'what-we-do', label: 'What We Do', color: 'var(--accent-honey)' },
+              { tab: 'team', label: 'Team', color: 'var(--accent-blush)' },
+              { tab: 'tech', label: 'Technologies', color: 'var(--accent-honey)' },
+              { tab: 'contact', label: 'Contact', color: 'var(--acc-secondary)' },
+            ].map(({ tab, label, color }, idx) => (
+              <button
+                key={tab}
+                onClick={() => {
+                  setActiveTab(tab);
+                  setMobileMenuOpen(false);
+                  setTimeout(() => window.scrollTo(0, 0), 0);
+                }}
+                className={`nav-link text-left w-full py-3 px-3 rounded-lg mb-1 transition-all duration-200 ${activeTab === tab ? 'text-[var(--ac-primary)] active' : `text-[${color}]`} ${mobileMenuOpen ? 'animate-slideInDown' : ''}`}
+                style={{ animationDelay: mobileMenuOpen ? `${0.05 * idx + 0.1}s` : undefined }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       </header>
 

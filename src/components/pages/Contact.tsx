@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact: React.FC = () => {
   return (
-    <div className="pt-20 px-4 max-w-7xl mx-auto pb-20">
+    <div className="py-8 px-4 max-w-7xl mx-auto pb-20">
       <div className="relative mb-16 fade-in">
         <div className="glass-card text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--accent-ember)] mb-8 pb-4 border-b border-[rgba(255,255,255,0.1)]">

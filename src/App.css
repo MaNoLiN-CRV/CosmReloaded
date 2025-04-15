@@ -2015,76 +2015,8 @@ header nav.hidden.md\:flex {
               background-image 0.3s ease !important;
 }
 
-/* Mobile header tab menu styling */
-.mobile-tab-menu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  background: rgba(43, 41, 45, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
-  z-index: 100;
-  transform-origin: top;
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
 
-.mobile-tab-menu.hidden {
-  transform: scaleY(0);
-  opacity: 0;
-}
 
-.mobile-tab-menu.visible {
-  transform: scaleY(1);
-  opacity: 1;
-}
-
-.mobile-tab-menu button {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--mist);
-  transition: all 0.2s ease;
-}
-
-.mobile-tab-menu button:last-child {
-  margin-bottom: 0;
-}
-
-.mobile-tab-menu button.active {
-  background: rgba(255, 160, 122, 0.15);
-  color: var(--ac-primary);
-}
-
-.mobile-tab-menu button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(5px);
-}
-
-/* Fix the hamburger button styling */
-.mobile-menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 101;
-}
-
-@media (max-width: 767px) {
-  .mobile-menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
 
 /* Fix footer to always stick to bottom */
 html, 

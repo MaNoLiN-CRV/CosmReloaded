@@ -107,7 +107,6 @@ const frameworks = [
   }
 ]
 
-// Service data
 const services = [
   {
     title: "High-Performance Backend",
