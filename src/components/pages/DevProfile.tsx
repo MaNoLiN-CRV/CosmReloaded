@@ -36,6 +36,8 @@ interface DevProfileProps {
   onBack: () => void;
 }
 
+
+
 const DevProfile: React.FC<DevProfileProps> = ({ profile, repos, loading, error, onBack }) => {
   return (
     <div className="pt-20 px-4 max-w-7xl mx-auto pb-20">

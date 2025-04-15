@@ -239,7 +239,8 @@ function App() {
 
   // Handle clicking a team member's GitHub profile
   const handleProfileView = (username: string) => {
-    setGithubUsername(username);
+    setGithubUsername(null); // Reset first to force effect
+    setTimeout(() => setGithubUsername(username), 0);
   };
 
   return (

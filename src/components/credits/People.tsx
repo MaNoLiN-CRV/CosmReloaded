@@ -53,16 +53,10 @@ export default function People({ people, onProfileView }: PeopleProps) {
     }, 500); // Extended for smoother animation
   };
 
-  // Handle GitHub profile click
   const handleGitHubClick = (e: React.MouseEvent, github: string) => {
     e.stopPropagation();
-    
-    // Visual feedback for click
-    const target = e.currentTarget as HTMLButtonElement;
-    target.classList.add('animate-click');
-    setTimeout(() => target.classList.remove('animate-click'), 700); // Match animation duration
-    
-    // Instead of redirecting, call the parent component's handler
+    e.preventDefault();
+ 
     if (onProfileView) {
       onProfileView(github);
     }
