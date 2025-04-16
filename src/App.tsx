@@ -25,7 +25,7 @@ const featuredServices = [
   },
   {
     ...services[1], // Seamless System Integration
-    description: "Connecting disparate systems for unified workflows." // Shorter description
+    description: "Design and develop robust embedded systems with custom kernels" // Shorter description
   },
   {
     ...services[2], // Optimized Web Solutions
@@ -109,7 +109,7 @@ function App() {
     <Layout activeTab={activeTab} setActiveTab={setActiveTab}>
       {/* Render the appropriate component based on the active tab */}
       {activeTab === 'home' && (
-        <Home featuredServices={featuredServices} />
+        <Home featuredServices={featuredServices} setActiveTab={setActiveTab} />
       )}
       
       {activeTab === 'what-we-do' && (

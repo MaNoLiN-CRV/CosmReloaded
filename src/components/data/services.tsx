@@ -11,13 +11,13 @@ const services = [
       color: 'var(--accent-honey)'
     },
     {
-      title: "Seamless System Integration",
+      title: "Embedded Systems & IoT",
       icon: "link",
-      description: "We specialize in connecting disparate systems into cohesive, efficient ecosystems. Our integration solutions enable flawless communication between platforms, creating unified workflows that enhance productivity and data consistency across your entire technology stack.",
+      description: "We design and develop robust embedded systems and IoT solutions tailored for real-world reliability and efficiency. Our expertise covers firmware, hardware integration, and secure connectivity for smart devices and industrial automation, with safe and efficient data handling.",
       features: [
-        { text: "Automated data synchronization and transformation", icon: "zap" },
-        { text: "API development and integration with third-party services", icon: "link" },
-        { text: "Microservices architecture and orchestration", icon: "server" },
+        { text: "Custom firmware and real-time OS development, providing maximum efficiency", icon: "chip" },
+        { text: "Sensor integration and hardware interfacing, with GPIO interfaces.", icon: "activity" },
+        { text: "Secure IoT connectivity and remote management, ensuring data integrity", icon: "wifi" },
       ],
       color: 'var(--accent-ember)'
     },

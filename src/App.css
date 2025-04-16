@@ -161,6 +161,21 @@
   overflow: hidden;
 }
 
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 50%;
+  height: 300%;
+  background: linear-gradient(to bottom right,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
+  transform: rotate(30deg);
+  animation: shimmer 7s infinite;
+}
+
 .shimmer-effect::before {
   content: '';
   position: absolute;
@@ -176,24 +191,6 @@
       rgba(255, 255, 255, 0) 100%);
   transform: rotate(25deg);
   animation: shimmer 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  will-change: transform, opacity;
-}
-
-.shimmer-effect::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 35%;
-  height: 300%;
-  background: linear-gradient(to bottom right,
-      transparent,
-      rgba(255, 255, 255, 0.03) 30%,
-      rgba(255, 255, 255, 0.06) 50%,
-      rgba(255, 255, 255, 0.03) 70%,
-      transparent);
-  transform: rotate(25deg);
-  animation: shimmer-after 30s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   will-change: transform, opacity;
 }
 
@@ -637,43 +634,6 @@
   /* Remove glow effect */
 }
 
-/* Remove the grid cell pulse animation that was causing the lights */
-@keyframes gridPulse {
-
-  0%,
-  100% {
-    opacity: 0.15;
-  }
-
-  50% {
-    opacity: 0.2;
-  }
-}
-
-.hero-glow {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(255, 160, 122, 0.05) 0%,
-      rgba(245, 215, 110, 0.05) 40%,
-      rgba(230, 107, 117, 0.02) 70%,
-      transparent 100%);
-  mix-blend-mode: screen;
-  pointer-events: none;
-  filter: blur(40px);
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.hero-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
 .hero-particle {
   position: absolute;
   width: 3px;
@@ -729,41 +689,6 @@
   }
 }
 
-/* Enhanced Neonic Grid and Background Effects */
-.hero-background {
-  position: fixed;
-  /* Changed from absolute to fixed */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-/* Remove the glowing cells, keep only the grid lines */
-.grid-cell {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  /* Reduced opacity and changed color */
-  border-radius: 0;
-  /* No rounded corners */
-  box-shadow: none;
-  /* Remove glow effect */
-}
-
 /* Remove the grid cell pulse animation that was causing the lights */
 @keyframes gridPulse {
 
@@ -794,22 +719,7 @@
   z-index: 2;
 }
 
-.blob-gradient {
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  left: 10%;
-  top: 10%;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(255, 160, 122, 0.1) 0%,
-      rgba(245, 215, 110, 0.05) 45%,
-      rgba(230, 107, 117, 0.03) 70%,
-      transparent 100%);
-  filter: blur(60px);
-  z-index: 1;
-  animation: blobMove 30s infinite alternate;
-}
+
 
 @keyframes blobMove {
   0% {
@@ -847,7 +757,6 @@
 /* Enhanced Logo Animations */
 .logo-container {
   position: relative;
-  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
@@ -1098,20 +1007,10 @@ button:focus {
     word-break: break-word;
   }
 
-  header {
-    padding: 0.5rem 1rem !important;
-    height: 60px;
-    min-height: unset;
-  }
-
   header .h-8.w-8 {
     height: 1.5rem;
     width: 1.5rem;
     margin-right: 0.5rem;
-  }
-
-  main.pt-20 {
-    padding-top: 4rem !important;
   }
 
   header {
@@ -1233,26 +1132,8 @@ button:focus {
   transform: translateY(0);
 }
 
-/* Shimmer effect for buttons */
-.shimmer-effect {
-  position: relative;
-  overflow: hidden;
-}
 
-.shimmer-effect::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 50%;
-  height: 300%;
-  background: linear-gradient(to bottom right,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent);
-  transform: rotate(30deg);
-  animation: shimmer 7s infinite;
-}
+
 
 /* NEW: 3D Card Hover Effect */
 .card-3d-effect {
@@ -1268,119 +1149,6 @@ button:focus {
     -15px 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* NEW: Magnetic Button Effect */
-.magnetic-btn {
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
-  overflow: visible;
-}
-
-.magnetic-btn::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  opacity: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  background: radial-gradient(circle at center,
-      rgba(255, 160, 122, 0.3),
-      transparent 70%);
-  z-index: -1;
-}
-
-.magnetic-btn:hover::after {
-  opacity: 1;
-}
-
-/* NEW: Typography Enhancement */
-.gradient-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(90deg,
-      var(--accent-ember) 0%,
-      var(--ac-primary) 50%,
-      var(--accent-honey) 100%);
-  display: inline-block;
-  position: relative;
-}
-
-.gradient-text::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-image: linear-gradient(90deg,
-      var(--accent-honey) 0%,
-      var(--ac-primary) 50%,
-      var(--accent-ember) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0;
-  transition: opacity 2s ease;
-}
-
-.gradient-text:hover::after {
-  opacity: 1;
-}
-
-/* NEW: Enhanced particle system */
-.particle-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.particle {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.3);
-}
-
-/* NEW: Reveal on scroll animation classes */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-on-scroll.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-on-scroll-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-on-scroll-left.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-on-scroll-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-on-scroll-right.active {
-  opacity: 1;
-  transform: translateX(0);
-}
 
 /* NEW: Enhanced team display */
 .team-grid {
@@ -1430,35 +1198,14 @@ button:focus {
   backdrop-filter: blur(8px);
 }
 
-/* NEW: Typing animation for hero section */
-.typing-text {
-  display: inline-block;
-  padding-right: 5px;
-}
 
-/* Create a separate class for the cursor animation */
-.typing-cursor {
-  border-right: 0.15em solid var(--ac-primary);
-  animation: blink-caret 0.75s step-end infinite;
-}
 
-/* Only keep this cursor animation */
-@keyframes cursorBlink {
 
-  from,
-  to {
-    border-color: transparent
-  }
-
-  50% {
-    border-color: var(--accent-honey);
-  }
-}
-
-/* NEW: Enhanced logo glow effect */
 .enhanced-logo-glow {
   filter: drop-shadow(0 0 8px rgba(255, 160, 122, 0.6));
-  animation: enhanced-logo-pulse 4s infinite ease-in-out;
+  animation:
+    enhanced-logo-pulse 4s infinite ease-in-out,
+    float 4s infinite ease-in-out;
 }
 
 @keyframes enhanced-logo-pulse {
@@ -1621,65 +1368,10 @@ body {
   overflow-x: hidden;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 main {
   flex: 1 0 auto;
   margin-top: 60px;
   /* Ensure content doesn't hide under fixed header */
-}
-
-/* Improve header layout */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  height: 60px;
-  min-height: unset !important;
-  background: rgba(43, 41, 45, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 0;
-}
-
-header>div {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-/* Logo always at the left */
-header .flex.items-center {
-  justify-content: flex-start;
-}
-
-/* Mobile menu button styles - properly shown on mobile */
-header button.md\:hidden {
-  margin-left: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-}
-
-/* Desktop nav is hidden on mobile, shown on desktop */
-header nav.hidden.md\:flex {
-  margin-left: auto;
 }
 
 /* Mobile navigation container - this holds the mobile menu */
@@ -1698,7 +1390,6 @@ header nav.hidden.md\:flex {
 
 /* Mobile tab navigation - ensure visibility and proper layout */
 .md\:hidden+div {
-  width: 100%;
   transition: max-height 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
 }
@@ -1706,7 +1397,6 @@ header nav.hidden.md\:flex {
 /* Mobile tab navigation buttons */
 .md\:hidden+div button {
   display: block;
-  width: 100%;
   text-align: left;
   padding: 12px 16px;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -1744,9 +1434,20 @@ header nav.hidden.md\:flex {
 
 @media (max-width: 767px) {
 
+  /* Proper mobile menu animation states */
+  .md\:hidden+div {
+    max-height: 0;
+    opacity: 0;
+  }
+  .mobile-tab-icon {
+    display: none !important;
+    /* Hide the tab icons on mobile */
+  }
+
   /* Ensure mobile menu button always shows on mobile */
   header button.md\:hidden {
     display: flex !important;
+
   }
 
   /* Keep desktop nav hidden on mobile */
@@ -1768,13 +1469,13 @@ header nav.hidden.md\:flex {
 
   /* Make tab buttons obvious and clickable */
   .md\:hidden+div button {
-    opacity: 1;
     margin-bottom: 2px;
   }
 
+
   /* Add animation for showing tab buttons */
   .md\:hidden+div.max-h-64 button {
-    animation: slideInDown 0.3s forwards;
+    animation: slideInDown 0.5s forwards;
   }
 
   @keyframes slideInDown {
@@ -1788,6 +1489,7 @@ header nav.hidden.md\:flex {
       opacity: 1;
     }
   }
+  
 }
 
 /* Fix media queries for proper display control */
@@ -1803,30 +1505,6 @@ header nav.hidden.md\:flex {
     display: flex !important;
     gap: 24px;
     align-items: center;
-  }
-}
-
-@media (max-width: 767px) {
-
-  /* Ensure mobile menu button always shows on mobile */
-  header button.md\:hidden {
-    display: flex !important;
-  }
-
-  /* Keep desktop nav hidden on mobile */
-  header nav.hidden.md\:flex {
-    display: none !important;
-  }
-
-  /* Proper mobile menu animation states */
-  .md\:hidden+div {
-    max-height: 0;
-    opacity: 0;
-  }
-
-  .md\:hidden+div.max-h-64 {
-    max-height: 300px;
-    opacity: 1;
   }
 }
 
@@ -1934,7 +1612,7 @@ header>div {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
+  padding: 0 1rem;
 }
 
 /* Logo all the way to the left */
@@ -1945,41 +1623,24 @@ header .flex.items-center {
 
 /* Mobile menu button all the way to the right */
 header button.md\:hidden {
+  margin-left: auto;
   margin: 0;
   padding-right: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 8px;
 }
 
 /* Fix desktop navigation alignment */
 header nav.hidden.md\:flex {
   margin-left: auto;
-  padding-right: 0.75rem;
+  margin-right: 0;
 }
 
-.card-hover-effect {
-  transition:
-    transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform, box-shadow;
-}
-
-.card-hover-effect:hover {
-  transform: translateY(-8px) scale(1.045);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 2;
-}
 
 
 /* Override any existing margin-bottom on footer */
 footer.mb-12 {
   margin-bottom: 0 !important;
-}
-
-@media (max-width: 767px) {
-  .mobile-tab-icon {
-    display: none !important;
-    /* Hide the tab icons on mobile */
-  }
 }

@@ -48,7 +48,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ languages, frameworks }) =>
         
         {/* Frameworks with staggered animations */}
         <div className="fade-in" style={{animationDelay: '0.3s'}}>
-          <h3 className="text-2xl font-bold text-[var(--accent-blush)] mb-6">Frameworks</h3>
+          <h3 className="text-2xl font-bold text-[var(--accent-blush)] mb-6 pt-4">Frameworks</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"> 
             {frameworks.map((fw, index) => (
               <div key={index} className="glass-item group transition-all scale-in" style={{animationDelay: `${0.4 + index * 0.05}s`}}>
