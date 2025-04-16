@@ -177,11 +177,26 @@ export const initTypingAnimation = (elementId: string, textArray: string[], typi
   };
 };
 
-
-
+export const init3DCardEffect = () => {
+  const heroSection = document.querySelector('body');
+  const heroGlow = document.querySelector('.hero-glow');
+  
+  if (heroSection && heroGlow) {
+    heroSection.addEventListener('mousemove', (e: MouseEvent) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      
+      (heroGlow as HTMLElement).style.left = `${x}px`;
+      (heroGlow as HTMLElement).style.top = `${y}px`;
+    });
+  }
+};
 
 export default {
   
   initParticleSystem,
-  initLogoAnimation
+  initLogoAnimation,
+  initTypingAnimation,
+  init3DCardEffect
+  
 };

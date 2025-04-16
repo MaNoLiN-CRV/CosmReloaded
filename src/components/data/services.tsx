@@ -12,12 +12,12 @@ const services = [
     },
     {
       title: "Embedded Systems & IoT",
-      icon: "link",
-      description: "We design and develop robust embedded systems and IoT solutions tailored for real-world reliability and efficiency. Our expertise covers firmware, hardware integration, and secure connectivity for smart devices and industrial automation, with safe and efficient data handling.",
+      icon: "chip",
+      description: "We design and develop robust embedded systems and IoT solutions tailored for real-world reliability and efficiency. Our expertise covers firmware, hardware integration, and secure connectivity for smart devices and industrial automation ",
       features: [
-        { text: "Custom firmware and real-time OS development, providing maximum efficiency", icon: "chip" },
+        { text: "Custom firmware and real-time OS development", icon: "chip" },
         { text: "Sensor integration and hardware interfacing, with GPIO interfaces.", icon: "activity" },
-        { text: "Secure IoT connectivity and remote management, ensuring data integrity", icon: "wifi" },
+        { text: "Secure IoT connectivity and remote management", icon: "wifi" },
       ],
       color: 'var(--accent-ember)'
     },

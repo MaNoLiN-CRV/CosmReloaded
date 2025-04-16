@@ -13,10 +13,8 @@ interface HomeProps {
   setActiveTab: (tab: string) => void;
 }
 
-
 const Home: React.FC<HomeProps> = ({ featuredServices, setActiveTab }) => {
   const heroRef = useRef<HTMLElement>(null);
-
 
   // Detect mobile (usar hook para SSR safe)
   const [isMobile, setIsMobile] = useState(false);
@@ -26,6 +24,8 @@ const Home: React.FC<HomeProps> = ({ featuredServices, setActiveTab }) => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+
 
   // Icon tab data (same as nav), quitamos el home
   const iconTabs = [
@@ -57,6 +57,7 @@ const Home: React.FC<HomeProps> = ({ featuredServices, setActiveTab }) => {
 
       animations.initParticleSystem();
       animations.initLogoAnimation();
+      animations.init3DCardEffect();
 
       // Add typing animation if we have an element with id "hero-typing"
       const typingElement = document.getElementById('hero-typing');
@@ -70,22 +71,25 @@ const Home: React.FC<HomeProps> = ({ featuredServices, setActiveTab }) => {
     });
   }, []);
 
+
   return (
 
     <section ref={heroRef} className="relative flex flex-col items-center justify-center min-h-[70vh] mb-16">
-      {/* Interactive neonic grid background */}
-    
-      
 
+      {/* Interactive neonic grid background */}
+
+
+      <div className="hero-background">
         <div className="hero-glow"></div>
         <canvas className="hero-particles" width={window.innerWidth} height={window.innerHeight} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }} />
         <div className="blob-gradient"></div>
-  
+      </div>
+
       <div className="py-8 relative z-10 text-center w-full px-4">
         <div className="logo-container mb-8 md:mb-10 fade-in" style={{ animationDelay: '0.3s', animationDuration: '2s' }}>
           <div className="h-80 w-80 md:h-72 md:w-72 mx-auto flex items-center 
           justify-center transform transition-all duration-700 hover:scale-105">
-            <img 
+            <img
               src="/C.svg"
               alt="Cosm Logo"
               className="w-full h-full object-contain enhanced-logo-glow float"
