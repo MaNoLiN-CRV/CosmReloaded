@@ -55,7 +55,6 @@ const Home: React.FC<HomeProps> = ({ featuredServices, setActiveTab }) => {
     // Import dynamically to avoid issues with SSR
     import('../../lib/animations').then((animations) => {
 
-      animations.initParticleSystem();
       animations.initLogoAnimation();
       animations.init3DCardEffect();
 
@@ -81,7 +80,7 @@ const Home: React.FC<HomeProps> = ({ featuredServices, setActiveTab }) => {
 
       <div className="hero-background">
         <div className="hero-glow"></div>
-        <canvas className="hero-particles" width={window.innerWidth} height={window.innerHeight} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }} />
+  
         <div className="blob-gradient"></div>
       </div>
 

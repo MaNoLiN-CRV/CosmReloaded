@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import People from '../credits/People';
 import historial from '../data/historial';
+import { Person } from '../data/person';
 
-// Define interfaces for team member data
-interface TeamMember {
-  name: string;
-  primaryRole: string;
-  secondaryRole?: string;
-  expertise: string[];
-  image: string;
-  github: string;
-  bio: string;
-}
 
 interface TeamProps {
-  team: TeamMember[];
+  team: Person[];
   onProfileView: (username: string) => void;
 }
 
@@ -35,7 +26,7 @@ const Team: React.FC<TeamProps> = ({ team, onProfileView }) => {
     }, 200);
   };
 
-  return (
+  return  (
     <div className="py-8 px-4 max-w-7xl mx-auto pb-20">
       <div className="mb-16 fade-in">
         <div className="glass-card">

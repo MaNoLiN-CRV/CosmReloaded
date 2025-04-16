@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/cosmites/"
+              href="https://www.instagram.com/cosmit.es/"
               className="p-3 bg-[rgba(245,215,110,0.15)] rounded-full text-[var(--accent-honey)] hover:bg-[rgba(245,215,110,0.25)] transition-all"
               aria-label="Instagram"
             >

@@ -15,6 +15,7 @@ import team from './components/data/team'
 import languages from './components/data/langs'
 import frameworks from './components/data/frameworks'
 import services from './components/data/services'
+import { GithubProfile, GithubRepo } from './components/data/githubprofile'
 
 
 // Define featuredServices based on services
@@ -36,33 +37,6 @@ const featuredServices = [
     description: "Developing high-performance cross-platform mobile apps." // Shorter description
   }
 ];
-
-interface GithubProfile {
-  name: string;
-  login: string;
-  avatar_url: string;
-  bio: string;
-  html_url: string;
-  public_repos: number;
-  followers: number;
-  following: number;
-  location: string | null;
-  blog: string | null;
-  twitter_username: string | null;
-  company: string | null;
-  created_at: string;
-}
-
-interface GithubRepo {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string | null;
-  language: string | null;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
-}
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');

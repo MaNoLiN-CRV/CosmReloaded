@@ -15,12 +15,12 @@ const historial: PersonHistorial[] = [
         jobs: [
             {
                 business: 'Safran Navigation & Timing',
-                work: 'Development & optimization of testing implementations in Python & RobotFramework',
+                work: 'Maintaining & optimizing a library written in Python for White Rabbit Protocol Testing Machines, achieving a 40% performance increase. Studied the protocol and functioning through the SyncE and PTP Protocol',
                 position: 'Junior Test Engineer',
             },
             {
                 business: 'Software Engineering Degree',
-                work: 'Development & design of any data source automatic apiREST in Rust',
+                work: 'Development & design of any data source automatic apiREST in Rust, focusing on scalability and performance',
                 position: 'Lead Developer',
             },
         ],

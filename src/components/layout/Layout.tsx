@@ -18,6 +18,13 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
 
+  useEffect(() => {
+      // Import dynamically to avoid issues with SSR
+      import('../../lib/animations').then((animations) => {
+        animations.initParticleSystem();
+      });
+    }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#2b292e] via-[#3a353c] to-[#50424d] text-[var(--mist)] font-['Hack'] flex flex-col">
       {/* Navbar with enhanced interactions */}
@@ -25,7 +32,6 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
       backdrop-blur-md border-b border-[rgba(255,255,255,0.12)] px-5 py-4 md:py-3">
        
           {/* Solo el nombre, sin logo, perfectamente alineado a la izquierda     <div className="flex items-center w-full max-w-7xl mx-auto px-4"> */}
-
           <h3 className="text-xl md:text-2xl font-bold z-10 text-[var(--ac-primary)]">cosmit.es</h3>
 
           {/* Desktop navigation with active indicators */}
@@ -122,8 +128,20 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
       </header>
 
       {/* Main Content */}
+    
       <main className="flex-grow">
+      <canvas className="hero-particles" width={window.innerWidth} height={window.innerHeight} 
+      style={{ 
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw', 
+        height: '100vh', 
+        pointerEvents: 'none',
+        zIndex: 1 
+      }} />
         {children}
+      
       </main>
       
       {/* Footer with subtle enhancements */}

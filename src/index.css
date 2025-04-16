@@ -1,5 +1,6 @@
 @import "./css/fonts.css";
 @import "./css/theme.css";
+@import "./css/rain-animation.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,7 +78,7 @@ h2 {
 
 h3 {
   font-size: var(--font-size-2xl);
-  color: var(--text-primary);
+  color: var (--text-primary);
 }
 
 h4 {
