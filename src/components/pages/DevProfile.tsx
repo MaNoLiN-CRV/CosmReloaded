@@ -1,5 +1,4 @@
 import React from 'react';
-import historial from '../data/historial';
 
 // Define interfaces for GitHub data
 interface GithubProfile {

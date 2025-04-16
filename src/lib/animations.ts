@@ -6,19 +6,6 @@
 // Reveal elements on scroll functionality
 
 
-// Utility function for debouncing
-function debounce<F extends (...args: any[]) => any>(func: F, waitFor: number) {
-  let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
-  return (...args: Parameters<F>): void => {
-    if (timeoutId !== null) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => func(...args), waitFor);
-  };
-}
-
-// Canvas-based neonic grid background for the entire home page
 
 
 export const initParticleSystem = () => {
