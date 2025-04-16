@@ -19,7 +19,6 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
   }, [activeTab]);
 
   useEffect(() => {
-      // Import dynamically to avoid issues with SSR
       import('../../lib/animations').then((animations) => {
         animations.initParticleSystem();
       });
@@ -130,18 +129,8 @@ const Layout: React.FC<LayoutProps> = ({ activeTab, setActiveTab, children }) =>
       {/* Main Content */}
     
       <main className="flex-grow">
-      <canvas className="hero-particles" width={window.innerWidth} height={window.innerHeight} 
-      style={{ 
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw', 
-        height: '100vh', 
-        pointerEvents: 'none',
-        zIndex: 1 
-      }} />
+        <canvas className="hero-particles" />
         {children}
-      
       </main>
       
       {/* Footer with subtle enhancements */}

@@ -31,20 +31,26 @@ export default function People({ people, onProfileView }: PeopleProps) {
   // Handler for opening the modal with the selected person
   const handlePersonClick = (person: Person) => {
     setClickedCard(person.name);
-
+    setSelectedPerson(person);
+    
+    // Delay setting isModalOpen to allow the portal to mount first
+    requestAnimationFrame(() => {
+      setIsModalOpen(true);
+      
+    });
+    
     setTimeout(() => {
       setClickedCard(null);
-      setSelectedPerson(person);
-      setIsModalOpen(true);
-    }, 100);
+    }, 200);
   };
 
   // Close the modal
   const closeModal = () => {
     setIsModalOpen(false);
+    // Wait for the closing animation to finish before removing the modal
     setTimeout(() => {
       setSelectedPerson(null);
-    }, 500); // Extended for smoother animation
+    }, 500);
   };
 
   const handleGitHubClick = (e: React.MouseEvent, github: string) => {
@@ -92,7 +98,7 @@ export default function People({ people, onProfileView }: PeopleProps) {
 
     return createPortal(
       <div className={`modal-backdrop ${isModalOpen ? 'active' : ''}`}>
-        <div className="modal-content" ref={modalRef}>
+        <div className={`modal-content ${isModalOpen ? 'active' : ''}`} ref={modalRef}>
           <div className="modal-header">
             <h2 className="text-2xl font-bold text-[var(--accent-honey)] text-glow-honey">
               {selectedPerson.name}
